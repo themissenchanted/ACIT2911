@@ -149,7 +149,6 @@ module.exports.login = (req, res) => {
             req.session.username = req.body.username;
             req.session.userinfo = doc;
         }
-
         res.json(result);
     })
 };
