@@ -1,0 +1,43 @@
+[{
+    "id": 1,
+    "title": "\uD83C\uDF4E Apple",
+    "description": "<span class=\"label label-info\">25 CAD / per box</span>",
+    "price": 25
+  },
+  {
+    "id": 2,
+    "title": "\uD83C\uDF4A Orange",
+    "description": "<span class=\"label label-info\">25 CAD / per box</span>",
+    "price": 25
+  },
+  {
+    "id": 3,
+    "title": "\uD83C\uDF4C Banana",
+    "description": "<span class=\"label label-info\">30 CAD / per box</span>",
+    "price": 30
+  },
+  {
+    "id": 4,
+    "title": "\uD83C\uDF4B Lemon",
+    "description": "<span class=\"label label-info\">35 CAD / per box</span>",
+    "price": 35
+  },
+  {
+    "id": 5,
+    "title": "\uD83C\uDF53 Strawberry",
+    "description": "<span class=\"label label-info\">50 CAD / per box</span>",
+    "price": 50
+  },
+  {
+    "id": 6,
+    "title": "\uD83C\uDF52 Cherry",
+    "description": "<span class=\"label label-info\">70 CAD / per box</span>",
+    "price": 70
+  },
+  {
+    "id": 7,
+    "title": "\uD83C\uDF51 Peach",
+    "description": "<span class=\"label label-info\">70 CAD / per box</span>",
+    "price": 70
+  }
+]

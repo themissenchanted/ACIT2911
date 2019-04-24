@@ -1,0 +1,31 @@
+{
+  "name": "shopping_chart_project",
+  "version": "1.0.0",
+  "author": "Tina Huang",
+  "email": "t1229te@gmail.com",
+  "private": false,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "captchapng": "0.0.1",
+    "connect-mongo": "^2.0.3",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "encodeurl": "^1.0.2",
+    "escape-html": "^1.0.3",
+    "express": "^4.16.4",
+    "express-session": "^1.15.3",
+    "hbs": "~4.0.1",
+    "mongodb": "^3.1.4",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7",
+    "request": "^2.88.0",
+    "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {},
+  "main": "app.js",
+  "license": "ISC",
+  "description": ""
+}
