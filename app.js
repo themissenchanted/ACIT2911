@@ -1,69 +1,86 @@
-var express = require('express');
-var path = require('path');
-
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-
-var hbs = require('hbs');
-var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
-var index = require('./routes/index');
+const express = require('express');
+const path = require('path');
+const utils = require('./utils.js');
+const bodyParser = require('body-parser');
+const hbs = require('hbs');
 
 var app = express();
+const router = express.Router();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-hbs.registerPartials(__dirname + '/views/partials');
+hbs.registerPartials(__dirname + '/partials');
+
+app.set('views', __dirname);
 app.set('view engine', 'hbs');
 
+app.use(express.static(__dirname));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: false
+  extended: true
 }));
 
-app.use(cookieParser());
-app.use(session({
-    secret: 'secret',
-    name: 'session_id',
-    cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 30
-    },
-    resave: false,
-    saveUninitialized: true,
-    store: new MongoStore({
-        url: 'mongodb://127.0.0.1:27017/login'
-    })
-}));
-
-app.use(express.static(path.join(__dirname, 'public')));
-
-// res.locals is an object passed to hbs engine
-app.use(function (req, res, next) {
-    res.locals.session = req.session;
-    next();
+router.get('/', (request, response) => {
+  response.render("landing.hbs");
 });
 
-app.use('/', index);
-
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+router.get('/cart', (request, response) => {
+  response.sendFile(path.join(__dirname+ "/cart.html"));
 });
 
-// error handler
-app.use(function (err, req, res) {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
+router.get('/groceries', (request, response) => {
+  response.sendFile(path.join(__dirname+ "/groceries.html"));
 });
 
-app.listen(8080, () => {
-    console.log('Server is up on the port 8080');
+router.get('/electronics', (request, response) => {
+  response.sendFile(path.join(__dirname + "/electronics.html"));
 });
 
-module.exports = app;
+router.get('/instruments', (request, response) => {
+  response.sendFile(path.join(__dirname+ "/instruments.html"));
+});
+
+app.use('/', router);
+
+var server = app.listen(8080, () => {
+  console.log('Server is up and running');
+  utils.init();
+});
+
+app.post('/login', (request, response) => {
+  var db = utils.getDb();
+  db.collection('users').find({}).toArray((err, result) => {
+    if (err) {
+      response.send('Unable to get login right now');
+    }
+    for (i=0; i < result.length; i++) {
+      if (request.body.username === result[i].username) {
+        if (request.body.password === result[i].password) {
+          response.render('index.hbs', {
+            success_login: 'You are logged in!'
+          })
+        } else {
+          response.render('index.hbs', {
+            success_login: 'Invalid login info'
+          })
+        }
+      } else {
+        response.render('index.hbs', {
+          success_login: 'Invalid login info'
+        })
+      }
+    }
+  });
+});
+
+app.post('/register', function (req, res) {
+  var db = utils.getDb();
+  req.body.cart = [];
+  db.collection('users').insertOne(req.body);
+  res.render("landing.hbs", {
+    cartLink: "<li class=\"nav-item\" id=\"cart\">\n" +
+        "<a href=\"http://localhost:8080/cart\" class=\"nav-link\">Your Cart</a>\n" +
+        "</li>"
+  });
+});
+
+module.exports = server;
+
