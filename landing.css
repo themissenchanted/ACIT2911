@@ -185,10 +185,14 @@ body {
   color: #212529;
   text-align: left;
   list-style: none;
-  background-color: rgba(220, 220, 220, 0.4);
+  background-color: rgba(232, 29, 99, 0.4);
   background-clip: padding-box;
   border: 1px solid rgba(210, 210, 210, 0.5);
   border-radius: 0.25rem;
+}
+
+.dropdown-item {
+  color: white;
 }
 
 .btn-pink {
