@@ -4,6 +4,7 @@ const utils = require('./utils.js');
 const bodyParser = require('body-parser');
 const hbs = require('hbs');
 const cart_string = "'s Cart";
+const captchapng = require("captchapng");
 const session = require('express-session');
 
 var app = express();
@@ -45,7 +46,8 @@ const redirectCart = (req, res, next) => {
 
 router.get('/', (request, response) => {
   response.render("landing.hbs", {
-    loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>'
+    loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
+    imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
   });
 });
 
@@ -76,7 +78,37 @@ var server = app.listen(8080, () => {
   utils.init();
 });
 
+const getVcodeImage = (req, res) => {
+  const vcode = parseInt(Math.random() * 9000 + 1000); //Generate random numbers
+
+  // Store the randomly generated verification code in the session
+  req.session.vcode = vcode;
+
+  var p = new captchapng(80, 30, vcode); // width,height,numeric captcha
+  p.color(0, 0, 0, 0); // First color: background (red, green, blue, alpha)
+  p.color(80, 80, 80, 255); // Second color: paint (red, green, blue, alpha)
+
+  var img = p.getBase64();
+  var imgbase64 = new Buffer(img, "base64");
+  res.writeHead(200, {
+    "Content-Type": "image/png"
+  });
+  res.end(imgbase64);
+};
+
+router.get('/vcode',getVcodeImage);
+
 app.post('/login', (request, response) => {
+
+  if (request.body.vcode != request.session.vcode) {
+    response.render('landing.hbs', {
+      popup: "<script>alert('Invalid Captcha Information, try again!')</script>",
+      loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
+      imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
+    });
+    return;
+  }
+
   var db = utils.getDb();
   db.collection('users').find({}).toArray((err, result) => {
     if (err) {
@@ -94,13 +126,15 @@ app.post('/login', (request, response) => {
         } else {
           response.render('landing.hbs', {
             popup: "<script>alert(\'Invalid Login Information, try again!'</script>",
-            loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>'
+            loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
+            imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
           });
         }
       } else {
         response.render('landing.hbs', {
           popup: '<script>alert("Invalid Login Information, try again!")</script>',
-          loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>'
+          loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
+          imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
         });
       }
     }
@@ -122,7 +156,8 @@ app.post('/register', function (request, response) {
     } else {
       response.render('landing.hbs', {
         popup: '<script>alert(\'Account already exists with that username, try again!\')</script>\n',
-        loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>'
+        loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
+        imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
       });
     }
   });
@@ -135,7 +170,8 @@ app.get('/logout', (request, response) => {
     }
     response.clearCookie("nozamA");
     response.render("landing.hbs", {
-      loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>'
+      loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
+      imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
     });
   })
 });
