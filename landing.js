@@ -23,3 +23,14 @@ $('.center').slick({
     }
   ]
 });
+function reveal() {
+  var field = document.getElementById("registerpassword")
+  var eye = document.getElementById("eye")
+  if (field.type == "password") {
+    field.type = "text"
+    eye.className = "fa fa-eye-slash"
+  } else {
+    field.type = "password"
+    eye.className = "fa fa-eye"
+  }
+}
