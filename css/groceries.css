@@ -1,0 +1,86 @@
+body {
+  background-image: linear-gradient(white, #f8ceff);
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.text-shadow {
+  text-shadow: 4px 4px 4px #aaa;
+}
+
+/* Kevin's Stuff */
+.bottomblur {
+  position: fixed;
+  width: 100%;
+  background-color: rgba(130, 130, 130, 0.2);
+  z-index: 5;
+  filter: blur(20px);
+}
+
+.bottomblur > * {
+  visibility: hidden;
+}
+
+/* edited bootstrap code */
+.drop:hover, .drop:focus {
+  color: #16181b;
+  text-decoration: none;
+  background-color: rgba(235, 235, 235, 0.15);
+}
+.nav-link {
+  color: white !important;
+  font-weight: bold;
+}
+
+/* edited bootstrap code */
+.navbg {
+  background-color: rgba(232, 29, 99, 0.5);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+/* edited bootstrap code */
+.dropmenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: rgba(232, 29, 99, 0.4);
+  background-clip: padding-box;
+  border: 1px solid rgba(210, 210, 210, 0.5);
+  border-radius: 0.25rem;
+}
+
+.dropdown-item {
+  color: white;
+}
+
+.btn-pink {
+  color: #fff;
+  background-color: rgb(232, 29, 99);
+  border-color: rgb(232, 29, 99);
+}
+
+.parallax {
+  /* The image used */
+  background-image: linear-gradient(white, #f8ceff);
+
+  /* Set a specific height */
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
