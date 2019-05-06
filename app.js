@@ -157,7 +157,7 @@ app.post('/register', function (request, response) {
       response.render('landing.hbs', {
         popup: '<script>alert(\'Account already exists with that username, try again!\')</script>\n',
         loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
-        imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
+        imgTag: '<img id="captchapng" src="/vcode" alt="Smiley Face" height="30" width="80">'
       });
     }
   });
