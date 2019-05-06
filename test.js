@@ -82,7 +82,12 @@ describe("GET /unknownPage", function () {
 
 describe("Test Login", function () {
     it("should produce 'Authenticated'", (done) => {
-        let result = tdd.login('username', 'password');
+        let result = tdd.login('username1', 'password1');
+        assert.equal(result, "Authenticated");
+        done();
+    });
+    it("should produce 'Authenticated'", (done) => {
+        let result = tdd.login('username2', 'password2');
         assert.equal(result, "Authenticated");
         done();
     });

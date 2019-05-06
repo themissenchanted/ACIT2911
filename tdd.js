@@ -1,24 +1,22 @@
 module.exports.login = (username, password) => {
     let users = [
         {
-            username: "username",
-            password: "password"
-        },
-        {
             username: "username1",
             password: "password1"
+        },
+        {
+            username: "username2",
+            password: "password2"
         }
     ];
-    for (i=0; i < users.length; i++) {
+    for (i=0; i < 2; i++) {
         if (users[i].username === username) {
             if (users[i].password === password) {
                 return "Authenticated"
-            } else {
-                return "Denied"}
-        } else {
-            return "Denied"
+            }
         }
     }
+    return "Denied";
 };
 
 module.exports.isPrime = (num) => {
