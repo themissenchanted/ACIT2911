@@ -11,6 +11,7 @@ var chai = require('chai'), chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
 const app = require('./app');
+const tdd = require('./tdd.js');
 
 describe('GET /', function () {
     it("should return landing page", function (done) {
@@ -69,12 +70,38 @@ describe("POSTS /register", function () {
 });
 
 describe("GET /unknownPage", function () {
-    it('should show 404 error for unknown page', function (done) {
+    it('should redirect for unknown route', function (done) {
         chai.request(app)
             .get('/unknown')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.redirect;
                 done();
             })
     })
+});
+
+describe("Test Login", function () {
+    it("should produce 'Authenticated'", (done) => {
+        let result = tdd.login('username', 'password');
+        assert.equal(result, "Authenticated");
+        done();
+    });
+    it("should produce 'Denied'", (done) => {
+        let result =tdd.login('fake_username', 'fake_password');
+        assert.equal(result, "Denied");
+        done();
+    });
+});
+
+describe("Test Prime", function () {
+    it("should return 'Prime'", (done) => {
+        let result = tdd.isPrime(7);
+        assert.equal(result, "Prime");
+        done();
+    });
+    it("should return 'Not Prime'", (done) => {
+        let result = tdd.isPrime(4);
+        assert.equal(result, "Not Prime");
+        done();
+    });
 });
