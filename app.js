@@ -176,5 +176,9 @@ app.get('/logout', (request, response) => {
   })
 });
 
+app.use(function(req, res) {
+    res.redirect("/");
+});
+
 module.exports = server;
 
