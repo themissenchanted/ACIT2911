@@ -65,6 +65,10 @@ router.get('/instruments', (request, response) => {
   response.sendFile(path.join(__dirname+ "/instruments.html"));
 });
 
+router.get('/todays_deals', (request, response) => {
+  response.sendFile(path.join(__dirname+ "/todays_deals.html"));
+});
+
 app.use('/', router);
 
 var server = app.listen(8080, () => {
