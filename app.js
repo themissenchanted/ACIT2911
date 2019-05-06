@@ -40,7 +40,7 @@ const redirectCart = (req, res, next) => {
       </li>`
     });
   } else {
-    next()
+    next();
   }
 };
 
@@ -122,7 +122,7 @@ app.post('/login', (request, response) => {
           response.render('landing.hbs', {
             cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.body.username + cart_string}</a></li>`,
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
-          })
+          });
         } else {
           response.render('landing.hbs', {
             popup: "<script>alert(\'Invalid Login Information, try again!'</script>",
@@ -173,7 +173,7 @@ app.get('/logout', (request, response) => {
       loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
       imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
     });
-  })
+  });
 });
 
 app.use(function(req, res) {

@@ -19,7 +19,7 @@ describe('GET /', function () {
             .end(function(err, res) {
                 expect(res).to.have.status(200);
                 done();
-            })
+            });
     });
 });
 
@@ -30,7 +30,7 @@ describe('GET /groceries', function () {
             .end(function(err, res) {
                 expect(res).to.have.status(200);
                 done();
-            })
+            });
     });
 });
 
@@ -41,7 +41,7 @@ describe('GET /electronics', function () {
             .end(function(err, res) {
                 expect(res).to.have.status(200);
                 done();
-            })
+            });
     });
 });
 
@@ -52,7 +52,7 @@ describe('GET /instruments', function () {
             .end(function(err, res) {
                 expect(res).to.have.status(200);
                 done();
-            })
+            });
     });
 });
 
@@ -73,8 +73,8 @@ describe("GET /unknownPage", function () {
         chai.request(app)
             .get('/unknown')
             .end(function(err, res) {
-                expect(res).to.have.status(404);
+                expect(res).to.redirect;
                 done();
-            })
-    })
+            });
+    });
 });
