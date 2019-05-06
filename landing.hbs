@@ -5,6 +5,7 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
@@ -60,7 +61,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input name="username" type="email" class="form-control" id="username" placeholder="Enter email" required>
+                        <input name="username" type="text" class="form-control" id="username" placeholder="Enter Username" required>
                     </div>
                     <div class="form-group">
                         <label for="loginpassword">Password</label>
@@ -96,14 +97,16 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="registeruser">Username</label>
-                        <input name="username" type="email" class="form-control" id="registeruser" placeholder="Enter email" required>
+                        <input name="username" type="text" class="form-control" id="registeruser" placeholder="Enter Username" required>
                     </div>
                     <div class="form-group">
                         <label for="registerpassword">Password</label>
-                        <div class="input-group" id="passwordeye">
+                        <div class="input-group">
                             <input name="password" type="password" class="form-control" id="registerpassword" placeholder="Enter password" required>
-                            <div class="input-group-addon">
-                                <a href="#"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                  <i class="fa fa-eye" id="eye" role="button" onclick="reveal()"></i>
+                                </span>
                             </div>
                         </div>
                     </div>
