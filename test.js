@@ -76,8 +76,8 @@ describe("GET /unknownPage", function () {
             .end(function(err, res) {
                 expect(res).to.redirect;
                 done();
-            })
-    })
+            });
+    });
 });
 
 describe("Test Login", function () {
