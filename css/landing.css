@@ -125,51 +125,6 @@ body {
   z-index: 10;
 }
 
-/* Raj's Stuff */
-.bd-example{
-  background-color: black;
-
-}
-.carousel-inner img {
-  width: 100%;
-}
-
-.title-black {
-  color: #393939;
-}
-
-.bg-jumbo{
-  background-color: rgba(230, 230, 230, 0.75);
-  padding: 10px;
-}
-
-.jumbotron {
-  position: absolute;
-  top:0px;
-  bottom: 0px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  background:none;
-  height: auto;
-  color: black;
-  text-align: center;
-}
-.carousel-control-prev-icon, .carousel-control-next-icon {
-  height: 35px;
-  width: 35px;
-  outline: lavenderblush;
-  background-color: rgb(232,29,99);
-  background-size: 40%, 40%;
-  border-radius: 50%;
-  border: 1px lavenderblush;
-}
-
-.carousel-item {
-  position: relative;
-  height: 60vh;
-}
-
 /* edited bootstrap code */
 .dropmenu {
   position: absolute;
@@ -199,6 +154,73 @@ body {
   color: #fff;
   background-color: rgb(232, 29, 99);
   border-color: rgb(232, 29, 99);
+}
+
+/* Raj's Stuff */
+.bd-example{
+  background-color: black;
+
+}
+.carousel-inner img {
+  width: 100%;
+}
+
+.title-black {
+  color: #393939;
+}
+
+.bg-jumbo{
+  background-color: rgba(230, 230, 230, 0.75);
+  padding: 10px;
+}
+
+.img-groceries {
+  background-image: url("../img/groceries.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.img-mother {
+  background-image: url("../img/mother.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.img-reward {
+  background-image: url("../img/treasure.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+
+.jumbotron {
+  position: absolute;
+  top:0px;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background:none;
+  height: auto;
+  color: black;
+  text-align: center;
+}
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  height: 35px;
+  width: 35px;
+  outline: lavenderblush;
+  background-color: rgb(232,29,99);
+  background-size: 40%, 40%;
+  border-radius: 50%;
+  border: 1px lavenderblush;
+}
+
+.carousel-item {
+  position: relative;
+  height: 60vh;
 }
 
 .parallax {
