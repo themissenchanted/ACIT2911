@@ -28,9 +28,9 @@ function reveal() {
   var eye = document.getElementById("eye")
   if (field.type == "password") {
     field.type = "text"
-    eye.className = "fa fa-eye-slash"
+    eye.className = "fa fa-eye"
   } else {
     field.type = "password"
-    eye.className = "fa fa-eye"
+    eye.className = "fa fa-eye-slash"
   }
 }
