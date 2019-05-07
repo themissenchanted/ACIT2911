@@ -258,8 +258,3 @@ body {
 .slide:not(.slick-active) {
   cursor: pointer;
 }
-@media only screen and (max-width: 768px) {
-  .carousel-control-prev-icon, .carousel-control-next-icon {
-    display: none;
-  }
-}

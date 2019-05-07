@@ -45,10 +45,17 @@ const redirectCart = (req, res, next) => {
 };
 
 router.get('/', (request, response) => {
-  response.render("landing.hbs", {
-    loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
-    imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
-  });
+  if (!request.session.username) {
+    response.render("landing.hbs", {
+      loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
+      imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
+    });
+  } else {
+    response.render('landing.hbs', {
+      cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
+      loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
+    });
+  }
 });
 
 router.get('/cart', redirectCart, (request, response) => {
@@ -56,19 +63,49 @@ router.get('/cart', redirectCart, (request, response) => {
 });
 
 router.get('/groceries', (request, response) => {
-  response.sendFile(path.join(__dirname+ "/groceries.html"));
+  if (!request.session.username) {
+    response.render("groceries.hbs", {
+      loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
+      imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
+    });
+  } else {
+    response.render('groceries.hbs', {
+      cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
+      loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
+    });
+  }
 });
 
 router.get('/electronics', (request, response) => {
-  response.sendFile(path.join(__dirname + "/electronics.html"));
+  if (!request.session.username) {
+    response.render("electronics.hbs", {
+      loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
+      imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
+    });
+  } else {
+    response.render('electronics.hbs', {
+      cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
+      loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
+    });
+  }
 });
 
 router.get('/instruments', (request, response) => {
-  response.sendFile(path.join(__dirname+ "/instruments.html"));
+  if (!request.session.username) {
+    response.render("instruments.hbs", {
+      loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
+      imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
+    });
+  } else {
+    response.render('instruments.hbs', {
+      cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
+      loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
+    });
+  }
 });
 
 router.get('/todays_deals', (request, response) => {
-  response.sendFile(path.join(__dirname+ "/todays_deals.html"));
+  response.sendFile(path.join(__dirname+ "/todays_deals.hbs"));
 });
 
 app.use('/', router);
@@ -122,7 +159,7 @@ app.post('/login', (request, response) => {
           response.render('landing.hbs', {
             cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.body.username + cart_string}</a></li>`,
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
-          })
+          });
         } else {
           response.render('landing.hbs', {
             popup: "<script>alert(\'Invalid Login Information, try again!'</script>",
