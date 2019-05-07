@@ -111,7 +111,7 @@ router.get('/todays_deals', (request, response) => {
       imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
     });
   } else {
-    response.render('todays_dealts.hbs', {
+    response.render('todays_deals.hbs', {
       cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
       loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
     });
