@@ -143,6 +143,28 @@ body {
   padding: 10px;
 }
 
+.img-groceries {
+  background-image: url("../img/groceries.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.img-mother {
+  background-image: url("../img/mother.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.img-reward {
+  background-image: url("../img/treasure.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+
 .jumbotron {
   position: absolute;
   top:0px;
