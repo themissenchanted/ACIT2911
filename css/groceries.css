@@ -1,0 +1,185 @@
+body {
+  background-image: linear-gradient(white, #f8ceff);
+  font-family: 'Fira Sans', sans-serif;
+  position: relative;
+}
+
+.groceries-img {
+  width: 100%;
+}
+
+.category {
+  background-image: url("../img/groceries.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50vh;
+}
+
+.text-shadow {
+  text-shadow: 4px 4px 4px #aaa;
+}
+
+/*Jumbotron*/
+.bg-jumbo{
+  background-color: rgba(230, 230, 230, 0.75);
+  padding: 10px;
+}
+
+/* Kevin's Stuff */
+.bottomblur {
+  position: fixed;
+  width: 100%;
+  background-color: rgba(130, 130, 130, 0.2);
+  z-index: 5;
+  filter: blur(20px);
+}
+
+.bottomblur > * {
+  visibility: hidden;
+}
+
+/* edited bootstrap code */
+.drop:hover, .drop:focus {
+  color: #16181b;
+  text-decoration: none;
+  background-color: rgba(235, 235, 235, 0.15);
+}
+.nav-link {
+  color: white !important;
+  font-weight: bold;
+}
+
+/* edited bootstrap code */
+.navbg {
+  background-color: rgba(232, 29, 99, 0.5);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+/* edited bootstrap code */
+.dropmenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: rgba(232, 29, 99, 0.4);
+  background-clip: padding-box;
+  border: 1px solid rgba(210, 210, 210, 0.5);
+  border-radius: 0.25rem;
+}
+
+.dropdown-item {
+  color: white;
+}
+
+.btn-pink {
+  color: #fff;
+  background-color: rgb(232, 29, 99);
+  border-color: rgb(232, 29, 99);
+}
+
+/* Parallax */
+
+.parallax {
+  height: 500px; /* fallback for older browsers */
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-perspective: 300px;
+  perspective: 300px;
+}
+
+.parallax__group {
+  position: relative;
+  height: 500px; /* fallback for older browsers */
+  height: 100vh;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.parallax__layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.parallax__layer--fore {
+  -webkit-transform: translateZ(90px) scale(.7);
+  transform: translateZ(90px) scale(.7);
+  z-index: 1;
+}
+
+.parallax__layer--base {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  z-index: 4;
+}
+
+.parallax__layer--back {
+  -webkit-transform: translateZ(-300px) scale(2);
+  transform: translateZ(-300px) scale(2);
+  z-index: 3;
+}
+
+.parallax__layer--deep {
+  -webkit-transform: translateZ(-600px) scale(3);
+  transform: translateZ(-600px) scale(3);
+  z-index: 2;
+}
+
+body, html {
+  overflow: hidden;
+}
+
+/* centre the content in the parallax layers */
+.parallax-title {
+  text-align: center;
+  position: absolute;
+  font-size: 5rem;
+  color: white;
+  background-color: rgba(230, 230, 230, 0.75);
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+/* style the groups
+--------------------------------------------- */
+
+#group1 {
+  z-index: 5; /* slide over group 2 */
+  height: 150vh;
+}
+#group1 .parallax__layer--base {
+  background-image: linear-gradient(white, #f8ceff);
+}
+
+#group2 {
+  z-index: 3; /* slide under groups 1 and 3 */
+}
+#group2 .parallax__layer--back {
+  background-image: linear-gradient(white, #f8ceff);
+  position: relative;
+  float: left;
+}
+
+#group7 {
+  z-index: 3; /* slide over group 7 */
+}
+#group7 .parallax__layer--base {
+  background-image: linear-gradient(white, #f8ceff);
+}
