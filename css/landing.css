@@ -152,7 +152,7 @@ body {
   margin: auto;
   background:none;
   height: auto;
-  color: white;
+  color: black;
   text-align: center;
 }
 .carousel-control-prev-icon, .carousel-control-next-icon {
@@ -257,4 +257,9 @@ body {
 
 .slide:not(.slick-active) {
   cursor: pointer;
+}
+@media only screen and (max-width: 768px) {
+  .carousel-control-prev-icon, .carousel-control-next-icon {
+    display: none;
+  }
 }
