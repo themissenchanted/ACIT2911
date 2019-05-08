@@ -10,6 +10,7 @@ const session = require('express-session');
 var electronics_products = require('./data/electronics');
 var instruments_products = require('./data/instruments');
 var groceries_products = require('./data/groceries');
+var all_items = electronics_products.concat(instruments_products, groceries_products);
 
 var app = express();
 const router = express.Router();
@@ -236,7 +237,6 @@ app.get('/logout', redirectNotLoggedIn, (request, response) => {
 });
 
 app.get('/add_cart/:id', redirectNotLoggedIn, (request, response) => {
-  var all_items = electronics_products.concat(instruments_products, groceries_products);
   var cart = request.session.cart;
   for (i=0; i < all_items.length; i++) {
     if (request.params.id === all_items[i].id) {
