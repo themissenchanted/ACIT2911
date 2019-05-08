@@ -36,13 +36,9 @@ app.use(session({
   }
 }));
 
-const redirectCart = (req, res, next) => {
+const redirectNotLoggedIn = (req, res, next) => {
   if (!req.session.username) {
-    res.render("landing.hbs", {
-      loginlogoutButton: `<li class="nav-item" id="loginbutton">
-      <a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a>
-      </li>`
-    });
+    res.redirect('/')
   } else {
     next()
   }
@@ -62,7 +58,7 @@ router.get('/', (request, response) => {
   }
 });
 
-router.get('/cart', redirectCart, (request, response) => {
+router.get('/cart', redirectNotLoggedIn, (request, response) => {
   response.render('cart.hbs');
 });
 
@@ -156,7 +152,6 @@ const getVcodeImage = (req, res) => {
 router.get('/vcode',getVcodeImage);
 
 app.post('/login', (request, response) => {
-
   if (request.body.vcode != request.session.vcode) {
     response.render('landing.hbs', {
       popup: "<script>alert('Invalid Captcha Information, try again!')</script>",
@@ -227,7 +222,7 @@ app.post('/register', function (request, response) {
   });
 });
 
-app.get('/logout', (request, response) => {
+app.get('/logout', redirectNotLoggedIn, (request, response) => {
   request.session.destroy(err => {
     if (err) {
       response.render('landing.hbs');
@@ -240,10 +235,10 @@ app.get('/logout', (request, response) => {
   })
 });
 
-app.get('/add_cart/:id', (request, response) => {
-  var all_items = electronics_products.concat(instruments_products, instruments_products);
+app.get('/add_cart/:id', redirectNotLoggedIn, (request, response) => {
+  var all_items = electronics_products.concat(instruments_products, groceries_products);
   var cart = request.session.cart;
-  for (i=0; i < all_items.length - 1; i++) {
+  for (i=0; i < all_items.length; i++) {
     if (request.params.id === all_items[i].id) {
       cart.push(all_items[i]);
       break;
@@ -254,11 +249,9 @@ app.get('/add_cart/:id', (request, response) => {
   var newvalues = { $set: { cart: request.session.cart} };
   db.collection("users").updateOne(myquery, newvalues, function(err, res) {
     if (err) throw err;
-    console.log(request.session.cart)
   });
   response.redirect('/')
 });
-
 
 app.use(function(req, res) {
     res.redirect("/");
