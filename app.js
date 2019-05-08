@@ -63,7 +63,7 @@ router.get('/', (request, response) => {
 });
 
 router.get('/cart', redirectCart, (request, response) => {
-  response.sendFile(path.join(__dirname+ "/cart.html"));
+  response.render('cart.hbs');
 });
 
 router.get('/groceries', (request, response) => {
@@ -171,6 +171,13 @@ app.post('/login', (request, response) => {
     if (err) {
       response.send('Unable to get login right now');
     }
+    if (result.length === 0) {
+      response.render('landing.hbs', {
+        popup: "<script>alert(\'Invalid Login Information, try again!')</script>",
+        loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
+        imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
+      });
+    }
     for (i=0; i < result.length; i++) {
       if (request.body.username === result[i].username) {
         if (request.body.password === result[i].password) {
@@ -182,7 +189,7 @@ app.post('/login', (request, response) => {
           });
         } else {
           response.render('landing.hbs', {
-            popup: "<script>alert(\'Invalid Login Information, try again!'</script>",
+            popup: "<script>alert(\'Invalid Login Information, try again!')</script>",
             loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
             imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
           });
@@ -232,6 +239,26 @@ app.get('/logout', (request, response) => {
     });
   })
 });
+
+app.get('/add_cart/:id', (request, response) => {
+  var all_items = electronics_products.concat(instruments_products, instruments_products);
+  var cart = request.session.cart;
+  for (i=0; i < all_items.length - 1; i++) {
+    if (request.params.id === all_items[i].id) {
+      cart.push(all_items[i]);
+      break;
+    }
+  }
+  var db = utils.getDb();
+  var myquery = { username: `${request.session.username}` };
+  var newvalues = { $set: { cart: request.session.cart} };
+  db.collection("users").updateOne(myquery, newvalues, function(err, res) {
+    if (err) throw err;
+    console.log(request.session.cart)
+  });
+  response.redirect('/')
+});
+
 
 app.use(function(req, res) {
     res.redirect("/");
