@@ -128,98 +128,21 @@
 </div>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="product-card" style="width: 16rem; position: relative;">
+        {{# each products}}
+        <div class="product-card" style="width: 16rem; position: relative;" id="{{this.id}}">
             <div class="product-img">
-                <img class="card-img-top img-fit" src="img/products/saxophone.png" alt="Card image cap">
+                {{{this.img}}}
             </div>
             <div class="card-body align-items-center text-center">
-                <h5 class="card-title text-center">Alto Saxophone</h5>
-                <p class="card-text">So saxy it hurts.</p>
+                <h5 class="card-title text-center">{{this.title}}</h5>
+                <p class="card-text">{{this.description}}</p>
                 <div class="cart-info">
-                    <h3>$620.99</h3>
+                    <h3>${{this.price}}</h3>
                     <a href="#" class="btn btn-pink">Add to Cart</a>
                 </div>
             </div>
         </div>
-        <div class="product-card" style="width: 16rem; position: relative;">
-            <div class="product-img">
-                <img class="card-img-top img-fit" src="img/products/piano.png" alt="Card image cap">
-            </div>
-            <div class="card-body align-items-center text-center">
-                <h5 class="card-title text-center">Electric Piano</h5>
-                <p class="card-text">Nothing says I love you more than a Beethoven masterpiece</p>
-                <div class="cart-info">
-                    <h3>$359.99</h3>
-                    <a href="#" class="btn btn-pink">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-        <div class="product-card" style="width: 16rem; position: relative;">
-            <div class="product-img">
-                <img class="card-img-top img-fit" src="img/products/guitar.png" alt="Card image cap">
-            </div>
-            <div class="card-body align-items-center text-center">
-                <h5 class="card-title text-center">Electric Guitar</h5>
-                <p class="card-text">This will get you the ladies or the boys coming to your yard.</p>
-                <div class="cart-info">
-                    <h3>$999.99</h3>
-                    <a href="#" class="btn btn-pink">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-        <div class="product-card" style="width: 16rem; position: relative;">
-            <div class="product-img">
-                <img class="card-img-top img-fit" src="img/products/guitar.png" alt="Card image cap">
-            </div>
-            <div class="card-body align-items-center text-center">
-                <h5 class="card-title text-center">Electric Guitar</h5>
-                <p class="card-text">This will get you the ladies or the boys coming to your yard.</p>
-                <div class="cart-info">
-                    <h3>$999.99</h3>
-                    <a href="#" class="btn btn-pink">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-        <div class="product-card" style="width: 16rem; position: relative;">
-            <div class="product-img">
-                <img class="card-img-top img-fit" src="img/products/guitar.png" alt="Card image cap">
-            </div>
-            <div class="card-body align-items-center text-center">
-                <h5 class="card-title text-center">Electric Guitar</h5>
-                <p class="card-text">This will get you the ladies or the boys coming to your yard.</p>
-                <div class="cart-info">
-                    <h3>$999.99</h3>
-                    <a href="#" class="btn btn-pink">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-        <div class="product-card" style="width: 16rem; position: relative;">
-            <div class="product-img">
-                <img class="card-img-top img-fit" src="img/products/guitar.png" alt="Card image cap">
-            </div>
-            <div class="card-body align-items-center text-center">
-                <h5 class="card-title text-center">Electric Guitar</h5>
-                <p class="card-text">This will get you the ladies or the boys coming to your yard.</p>
-                <div class="cart-info">
-                    <h3>$999.99</h3>
-                    <a href="#" class="btn btn-pink">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-        <div class="product-card" style="width: 16rem; position: relative;">
-            <div class="product-img">
-                <img class="card-img-top img-fit" src="img/products/guitar.png" alt="Card image cap">
-            </div>
-            <div class="card-body align-items-center text-center">
-                <h5 class="card-title text-center">Electric Guitar</h5>
-                <p class="card-text">This will get you the ladies or the boys coming to your yard.</p>
-                <div class="cart-info">
-                    <h3>$999.99</h3>
-                    <a href="#" class="btn btn-pink">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
+            {{/each}}
     </div>
     {{{popup}}}
 </div>

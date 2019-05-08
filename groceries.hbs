@@ -128,46 +128,21 @@
     </div>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="product-card" style="width: 16rem; position: relative;">
+            {{# each products}}
+            <div class="product-card" style="width: 16rem; position: relative;" id="{{this.id}}">
                 <div class="product-img">
-                    <img class="card-img-top img-fit" src="img/products/coke.png" alt="Card image cap">
+                    {{{this.img}}}
                 </div>
                 <div class="card-body align-items-center text-center">
-                    <h5 class="card-title text-center">Coca Cola</h5>
-                    <p class="card-text">The greatest soft drink in the universe. Fantastic.</p>
+                    <h5 class="card-title text-center">{{this.title}}</h5>
+                    <p class="card-text">{{this.description}}</p>
                     <div class="cart-info">
-                        <h3>$1.99</h3>
+                        <h3>${{this.price}}</h3>
                         <a href="#" class="btn btn-primary">Add to Cart</a>
                     </div>
                 </div>
             </div>
-            <div class="product-card" style="width: 16rem; position: relative;">
-                <div class="product-img">
-                    <img class="card-img-top img-fit" src="img/products/steak.png" alt="Card image cap">
-                </div>
-                <div class="card-body align-items-center text-center">
-                    <h5 class="card-title text-center">Kobe Steak</h5>
-                    <p class="card-text">One word: Kobe!</p>
-                    <div class="cart-info">
-                        <h3>$25.99</h3>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="product-card" style="width: 16rem; position: relative;">
-                <div class="product-img">
-                    <img class="card-img-top img-fit" src="img/products/eggs.png" alt="Card image cap">
-                </div>
-                <div class="card-body align-items-center text-center">
-                    <h5 class="card-title text-center">White Eggs</h5>
-                    <p class="card-text">Different than brown eggs. Different taste. Treat both equally.</p>
-                    <div class="cart-info">
-                        <h3>$5.99</h3>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-
+            {{/each}}
         </div>
         {{{popup}}}
     </div>

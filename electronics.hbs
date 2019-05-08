@@ -128,46 +128,21 @@
 </div>
 <div class="container">
   <div class="row justify-content-center">
-    <div class="product-card" style="width: 16rem; position: relative;">
+      {{# each products}}
+    <div class="product-card" style="width: 16rem; position: relative;" id="{{this.id}}">
       <div class="product-img">
-        <img class="card-img-top img-fit" src="img/products/headphones.png" alt="Card image cap">
+          {{{this.img}}}
       </div>
       <div class="card-body align-items-center text-center">
-        <h5 class="card-title text-center">Slick Headphones</h5>
-        <p class="card-text">Amazing look. Amazing sound. Amazing taste.</p>
+        <h5 class="card-title text-center">{{this.title}}</h5>
+        <p class="card-text">{{this.description}}</p>
         <div class="cart-info">
-          <h3>$89.99</h3>
+          <h3>${{this.price}}</h3>
           <a href="#" class="btn btn-pink">Add to Cart</a>
         </div>
       </div>
     </div>
-    <div class="product-card" style="width: 16rem; position: relative;">
-      <div class="product-img">
-        <img class="card-img-top img-fit" src="img/products/mouse.png" alt="Card image cap">
-      </div>
-      <div class="card-body align-items-center text-center">
-        <h5 class="card-title text-center">Gaming Mouse</h5>
-        <p class="card-text">Go from Bronze rank to Diamond... Guaranteed!</p>
-        <div class="cart-info">
-          <h3>$99.99</h3>
-          <a href="#" class="btn btn-pink">Add to Cart</a>
-        </div>
-      </div>
-    </div>
-    <div class="product-card" style="width: 16rem; position: relative;">
-      <div class="product-img">
-        <img class="card-img-top img-fit" src="img/products/laptop.png" alt="Card image cap">
-      </div>
-      <div class="card-body align-items-center text-center">
-        <h5 class="card-title text-center">Razer Laptop</h5>
-        <p class="card-text">Git Gud</p>
-        <div class="cart-info">
-          <h3>$1899.99</h3>
-          <a href="#" class="btn btn-pink">Add to Cart</a>
-        </div>
-      </div>
-    </div>
-
+      {{/each}}
   </div>
     {{{popup}}}
 </div>

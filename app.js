@@ -7,6 +7,10 @@ const cart_string = "'s Cart";
 const captchapng = require("captchapng");
 const session = require('express-session');
 
+var electronics_products = require('./data/electronics');
+var instruments_products = require('./data/instruments');
+var groceries_products = require('./data/groceries');
+
 var app = express();
 const router = express.Router();
 
@@ -65,11 +69,13 @@ router.get('/cart', redirectCart, (request, response) => {
 router.get('/groceries', (request, response) => {
   if (!request.session.username) {
     response.render("groceries.hbs", {
+      products: groceries_products,
       loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
       imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
     });
   } else {
     response.render('groceries.hbs', {
+      products: groceries_products,
       cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
       loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
     });
@@ -79,11 +85,13 @@ router.get('/groceries', (request, response) => {
 router.get('/electronics', (request, response) => {
   if (!request.session.username) {
     response.render("electronics.hbs", {
+      products: electronics_products,
       loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
       imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
     });
   } else {
     response.render('electronics.hbs', {
+      products: electronics_products,
       cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
       loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
     });
@@ -93,11 +101,13 @@ router.get('/electronics', (request, response) => {
 router.get('/instruments', (request, response) => {
   if (!request.session.username) {
     response.render("instruments.hbs", {
+      products: instruments_products,
       loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
       imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
     });
   } else {
     response.render('instruments.hbs', {
+      products: instruments_products,
       cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
       loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
     });
