@@ -173,16 +173,23 @@ app.post('/login', (request, response) => {
         loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
         imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
       });
-    }
-    for (i=0; i < result.length; i++) {
-      if (request.body.username === result[i].username) {
-        if (request.body.password === result[i].password) {
-          request.session.username = request.body.username;
-          request.session.cart = result[i].cart;
-          response.render('landing.hbs', {
-            cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.body.username + cart_string}</a></li>`,
-            loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
-          });
+    } else {
+      for (i=0; i < result.length; i++) {
+        if (request.body.username === result[i].username) {
+          if (request.body.password === result[i].password) {
+            request.session.username = request.body.username;
+            request.session.cart = result[i].cart;
+            response.render('landing.hbs', {
+              cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.body.username + cart_string}</a></li>`,
+              loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
+            });
+          } else {
+            response.render('landing.hbs', {
+              popup: "<script>alert(\'Invalid Login Information, try again!')</script>",
+              loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
+              imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
+            });
+          }
         } else {
           response.render('landing.hbs', {
             popup: "<script>alert(\'Invalid Login Information, try again!')</script>",
