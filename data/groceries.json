@@ -4,34 +4,39 @@
     "title": "Semi-Soft Butter",
     "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/butter.png\" alt=\"Card image cap\">",
     "description": "If you have toast..... enough said",
-    "price": 2.99
+    "price": 2.99,
+    "qty": 1
   },
   {
     "id": "chips1",
     "title": "Lays Chips",
     "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/chips.png\" alt=\"Card image cap\">",
     "description": "Crispy, Salty, and always leaves you wanting more",
-    "price": 3.99
+    "price": 3.99,
+    "qty": 1
   },
   {
     "id": "coke1",
     "title": "Coke",
     "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/coke.png\" alt=\"Card image cap\">",
     "description": "The OG of soft drinks, stock up",
-    "price": 1.99
+    "price": 1.99,
+    "qty": 1
   },
   {
     "id": "eggs1",
     "title": "White Eggs",
     "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/eggs.png\" alt=\"Card image cap\">",
     "description": "Don't be mistaken, they taste just as good as brown eggs",
-    "price": 4.99
+    "price": 4.99,
+    "qty": 1
   },
   {
     "id": "steak1",
     "title": "Steak",
     "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/steak.png\" alt=\"Card image cap\">",
     "description": "Its almost summer, fire up that BBQ and get cook'in with these bad boys",
-    "price": 8.99
+    "price": 8.99,
+    "qty": 1
   }
 ]
