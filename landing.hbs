@@ -72,6 +72,7 @@
                         <input name="vcode" type="text" class="form-control" id="vcode" placeholder="Enter Verification Code" required>
                     </div>
                     {{{imgTag}}}
+                    <p>Click To Change!</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-dismiss="modal">
@@ -394,6 +395,11 @@
         document.getElementById('pwd_Strong').className = Scolor;
         document.getElementById('pwd_Medium').innerHTML = Color_Html;
     }
+</script>
+<script>
+    $("#captchapng").click(function(){
+        $("#captchapng").attr('src',`/vcode?randomId=${Math.random()}`)
+    });
 </script>
 </body>
 </html>
