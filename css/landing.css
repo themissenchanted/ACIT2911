@@ -304,6 +304,20 @@ body {
   font-size: 18px; /* Increase font size */
 }
 
+#open{
+  background-color: white;
+  color: deeppink;
+  float-displace: auto;
+  padding: 15px;
+  border: none;
+  cursor: pointer;
+  left: 25px;
+  z-index: 99;
+  position: fixed;
+  bottom: 20px;
+  border-radius:10px;
+}
+
 
 /* The Overlay (background) */
 .overlay {
@@ -362,20 +376,6 @@ body {
     top: 15px;
     right: 35px;
   }
-}
-#open{
-  background-color: white;
-  color: deeppink;
-  float-displace: auto;
-  padding: 15px;
-  border: none;
-  cursor: pointer;
-  left: 25px;
-  z-index: 99;
-  position: fixed;
-  bottom: 20px;
-  border-radius:10px;
-
 }
 
 .pwd{width:40px;height:20px;line-height:14px;padding-top:2px;}
