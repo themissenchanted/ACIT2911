@@ -75,9 +75,9 @@ body {
   border-color: rgb(232, 29, 99);
 }
 
-/* Groceries Stuff */
+/* Cart Stuff */
 .main-img {
-  background-image: url("../img/grocery.jpg");
+  background-image: url("../img/cart.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -93,10 +93,6 @@ body {
   background-image: linear-gradient(to right, rgba(26, 26, 26, 0.5), rgba(255, 255, 255, 0));
 }
 
-.product-img {
-  height: 150px;
-}
-
 .product-card {
   height: 425px;
   padding: 20px;
@@ -108,21 +104,36 @@ body {
   background-color: white;
 }
 
-.cart-info {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 25px;
-}
-
 .img-fit {
   height: 100%;
   width: 100%;
   object-fit: contain;
 }
 
-/***************** Footer *****************/
+/**************** Cart CSS *****************/
+.cart-item {
+  height: 12vh;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 15px;
+  background-image: linear-gradient(to left, rgb(247, 247, 247), white);
+}
 
+.cart-img {
+  left: 0;
+  width: 100px;
+  padding: 5px 0;
+  float: left;
+}
+
+.checkout-button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-right: 1rem;
+}
+
+/***************** Footer *******************/
 .footer {
   background-color: rgba(232, 29, 99, 0.5);
   display: block;
