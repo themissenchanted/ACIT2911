@@ -243,8 +243,12 @@ app.get('/add_cart/:id', redirectNotLoggedIn, (request, response) => {
     if (request.params.id === all_items[i].id) {
       try {
         if (request.params.id === request.session.cart[i].id) {
-          request.session.cart[i].qty += 1;
-          break;
+          if (request.session.cart[i].qty == 5) {
+            break;
+          } else {
+            request.session.cart[i].qty += 1;
+            break;
+          }
         } else {
           cart.push(all_items[i]);
           break;
