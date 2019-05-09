@@ -1,0 +1,37 @@
+[
+  {
+    "id": "headphones1",
+    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/electronics/headphones.png\" alt=\"Card image cap\">",
+    "title": "Slick Headphones",
+    "description": "Amazing look. Amazing sound. Amazing taste.",
+    "price": 89.99
+  },
+  {
+    "id": "ipod1",
+    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/electronics/ipod.png\" alt=\"Card image cap\">",
+    "title": "iPod Shuffle",
+    "description": "Music only sounds good if you have one of these babies",
+    "price": 79.99
+  },
+  {
+    "id": "laptop1",
+    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/electronics/laptop.png\" alt=\"Card image cap\">",
+    "title": "Razer Laptop",
+    "description": "Buy this, and you instantly gain 4 ranks in league.",
+    "price": 1899.99
+  },
+  {
+    "id": "mouse1",
+    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/electronics/mouse.png\" alt=\"Card image cap\">",
+    "title": "Gaming Mouse",
+    "description": "Click Heads, it's that simple.",
+    "price": 149.99
+  },
+  {
+    "id": "tv1",
+    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/electronics/tv.webp\" alt=\"Card image cap\">",
+    "title": "4K TV",
+    "description": "Amazing look. Amazing sound. Amazing taste.",
+    "price": 499.99
+  }
+]

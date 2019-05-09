@@ -72,6 +72,7 @@
                         <input name="vcode" type="text" class="form-control" id="vcode" placeholder="Enter Verification Code" required>
                     </div>
                     {{{imgTag}}}
+                    <p>Click To Change!</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-dismiss="modal">
@@ -97,18 +98,28 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="registeruser">Username</label>
-                        <input name="username" type="text" class="form-control" id="registeruser" placeholder="Enter Username" required>
+                        <input name="username" type="text" minlength="6" class="form-control" id="registeruser" placeholder="Enter Username" required>
                     </div>
                     <div class="form-group">
                         <label for="registerpassword">Password</label>
                         <div class="input-group">
-                            <input name="password" type="password" class="form-control" id="registerpassword" placeholder="Enter password" required>
+                            <input name="password" type="password" minlength="7" class="form-control" id="registerpassword" placeholder="Enter password" required
+                            onKeyUp="CheckIntensity(this.value)">
                             <div class="input-group-append">
                                 <span class="input-group-text">
                                   <i class="fa fa-eye-slash" id="eye" role="button" onclick="reveal()"></i>
                                 </span>
                             </div>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <table border="0" cellpadding="0" cellspacing="0" style="transform:translateY(8px);">
+                            <tr align="center">
+                                <td id="pwd_Weak" class="pwd pwd_c"> </td>
+                                <td id="pwd_Medium" class="pwd pwd_c pwd_f">NULL</td>
+                                <td id="pwd_Strong" class="pwd pwd_c pwd_c_r"> </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -193,35 +204,35 @@
     <div class="slider center">
         <div class="hover-card slick-slide" style="width: 16rem;">
             <img class="card-img mx-auto img-fluid"
-                 src="img/products/chips.png" alt="" />
+                 src="img/products/groceries/chips.png" alt="" />
             <p class="title">Lays Chips</p>
             <div class="overlay"></div>
             <div class="button"><a href="#"> View Details </a></div>
         </div>
         <div class="hover-card slick-slide" style="width: 16rem;">
             <img class="card-img mx-auto img-fluid"
-                 src="img/products/coke.png" alt="" />
+                 src="img/products/groceries/coke.png" alt="" />
             <p class="title">Coca Cola</p>
             <div class="overlay"></div>
             <div class="button"><a href="#"> View Details </a></div>
         </div>
         <div class="hover-card slick-slide" style="width: 16rem;">
             <img class="card-img mx-auto img-fluid"
-                 src="img/products/eggs.png" alt="" />
+                 src="img/products/groceries/eggs.png" alt="" />
             <p class="title">White Eggs</p>
             <div class="overlay"></div>
             <div class="button"><a href="#"> View Details </a></div>
         </div>
         <div class="hover-card slick-slide" style="width: 16rem;">
             <img class="card-img mx-auto img-fluid"
-                 src="img/products/butter.png" alt="" />
+                 src="img/products/groceries/butter.png" alt="" />
             <p class="title">Butter</p>
             <div class="overlay"></div>
             <div class="button"><a href="#"> View Details </a></div>
         </div>
         <div class="hover-card slick-slide" style="width: 16rem;">
             <img class="card-img mx-auto img-fluid"
-                 src="img/products/steak.png" alt="" />
+                 src="img/products/groceries/steak.png" alt="" />
             <p class="title">Kobe Steak</p>
             <div class="overlay"></div>
             <div class="button"><a href="#"> View Details </a></div>
@@ -232,35 +243,35 @@
     <div class="slider center">
         <div class="hover-card slick-slide" style="width: 16rem;">
             <img class="card-img-wide pt-5 img-fluid"
-                 src="img/products/guitar.png" alt="" />
+                 src="img/products/instruments/guitar.png" alt="" />
             <p class="title">Electric Guitar</p>
             <div class="overlay"></div>
             <div class="button"><a href="#"> View Details </a></div>
         </div>
         <div class="hover-card slick-slide" style="width: 16rem;">
             <img class="card-img mx-auto img-fluid"
-                 src="img/products/clarinet.png" alt="" />
+                 src="img/products/instruments/clarinet.png" alt="" />
             <p class="title">Clarinet</p>
             <div class="overlay"></div>
             <div class="button"><a href="#"> View Details </a></div>
         </div>
         <div class="hover-card slick-slide" style="width: 16rem;">
             <img class="card-img mx-auto img-fluid"
-                 src="img/products/saxophone.png" alt="" />
+                 src="img/products/instruments/saxophone.png" alt="" />
             <p class="title">Alto Saxophone</p>
             <div class="overlay"></div>
             <div class="button"><a href="#"> View Details </a></div>
         </div>
         <div class="hover-card slick-slide" style="width: 16rem;">
             <img class="card-img mx-auto img-fluid"
-                 src="img/products/triangle.png" alt="" />
+                 src="img/products/instruments/triangle.png" alt="" />
             <p class="title">Triangle</p>
             <div class="overlay"></div>
             <div class="button"><a href="#"> View Details </a></div>
         </div>
         <div class="hover-card slick-slide" style="width: 16rem;">
             <img class="card-img-wide pt-5"
-                 src="img/products/piano.png" alt="" />
+                 src="img/products/instruments/piano.png" alt="" />
             <p class="title">Piano</p>
             <div class="overlay"></div>
             <div class="button"><a href="#"> View Details </a></div>
@@ -270,35 +281,35 @@
     <div class="slider center">
         <div class="hover-card slick-slide" style="width: 16rem;">
             <img class="card-img mx-auto img-fluid"
-                 src="img/products/laptop.png" alt="" />
+                 src="img/products/electronics/laptop.png" alt="" />
             <p class="title">Razer Laptop</p>
             <div class="overlay"></div>
             <div class="button"><a href="#"> View Details </a></div>
         </div>
         <div class="hover-card slick-slide" style="width: 16rem;">
             <img class="card-img mx-auto img-fluid"
-                 src="img/products/headphones.png" alt="" />
+                 src="img/products/electronics/headphones.png" alt="" />
             <p class="title">Headphones</p>
             <div class="overlay"></div>
             <div class="button"><a href="#"> View Details </a></div>
         </div>
         <div class="hover-card slick-slide" style="width: 16rem;">
             <img class="card-img mx-auto img-fluid"
-                 src="img/products/ipod.png" alt="" />
+                 src="img/products/electronics/ipod.png" alt="" />
             <p class="title">iPod Mini</p>
             <div class="overlay"></div>
             <div class="button"><a href="#"> View Details </a></div>
         </div>
         <div class="hover-card slick-slide" style="width: 16rem;">
             <img class="card-img-wide pt-5 img-fluid"
-                 src="img/products/mouse.png" alt="" />
+                 src="img/products/electronics/mouse.png" alt="" />
             <p class="title">Gaming Mouse</p>
             <div class="overlay"></div>
             <div class="button"><a href="#"> View Details </a></div>
         </div>
         <div class="hover-card slick-slide" style="width: 16rem;">
             <img class="card-img img-fluid img-fluid"
-                 src="img/products/tv.webp" alt="" />
+                 src="img/products/electronics/tv.webp" alt="" />
             <p class="title">4K HD Television</p>
             <div class="overlay"></div>
             <div class="button"><a href="#"> View Details </a></div>
@@ -339,15 +350,56 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script type="text/javascript">
-    function form_submit() {
-        document.getElementById("register").submit();
+<script>
+    function CheckIntensity(pwd) {
+        var Mcolor, Wcolor, Scolor, Color_Html;
+        var m = 0;
+        if (pwd.length == 0) {
+            m = 0;
+        } else if (pwd.length <= 3) {
+            m = 1;
+        } else if (pwd.length <= 6) {
+            m = 2;
+        } else {
+            m = 3;
+        }
+
+        switch (m) {
+            case 1:
+                Wcolor = "pwd pwd_Weak_c";
+                Mcolor = "pwd pwd_c";
+                Scolor = "pwd pwd_c pwd_c_r";
+                Color_Html = "Weak";
+                break;
+            case 2:
+                Wcolor = "pwd pwd_Medium_c";
+                Mcolor = "pwd pwd_Medium_c";
+                Scolor = "pwd pwd_c pwd_c_r";
+                Color_Html = "Medium";
+                break;
+            case 3:
+                Wcolor = "pwd pwd_Strong_c";
+                Mcolor = "pwd pwd_Strong_c";
+                Scolor = "pwd pwd_Strong_c pwd_Strong_c_r";
+                Color_Html = "Strong";
+                break;
+            default:
+                Wcolor = "pwd pwd_c";
+                Mcolor = "pwd pwd_c pwd_f";
+                Scolor = "pwd pwd_c pwd_c_r";
+                Color_Html = "NULL";
+                break;
+        }
+        document.getElementById('pwd_Weak').className = Wcolor;
+        document.getElementById('pwd_Medium').className = Mcolor;
+        document.getElementById('pwd_Strong').className = Scolor;
+        document.getElementById('pwd_Medium').innerHTML = Color_Html;
     }
 </script>
-<script type="text/javascript">
-    function form_submit1() {
-        document.getElementById("login_form").submit();
-    }
+<script>
+    $("#captchapng").click(function(){
+        $("#captchapng").attr('src',`/vcode?randomId=${Math.random()}`)
+    });
 </script>
 </body>
 </html>

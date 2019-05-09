@@ -7,6 +7,11 @@ const cart_string = "'s Cart";
 const captchapng = require("captchapng");
 const session = require('express-session');
 
+var electronics_products = require('./data/electronics');
+var instruments_products = require('./data/instruments');
+var groceries_products = require('./data/groceries');
+var all_items = electronics_products.concat(instruments_products, groceries_products);
+
 var app = express();
 const router = express.Router();
 
@@ -32,13 +37,9 @@ app.use(session({
   }
 }));
 
-const redirectCart = (req, res, next) => {
+const redirectNotLoggedIn = (req, res, next) => {
   if (!req.session.username) {
-    res.render("landing.hbs", {
-      loginlogoutButton: `<li class="nav-item" id="loginbutton">
-      <a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a>
-      </li>`
-    });
+    res.redirect('/')
   } else {
     next();
   }
@@ -58,18 +59,20 @@ router.get('/', (request, response) => {
   }
 });
 
-router.get('/cart', redirectCart, (request, response) => {
-  response.sendFile(path.join(__dirname+ "/cart.html"));
+router.get('/cart', redirectNotLoggedIn, (request, response) => {
+  response.render('cart.hbs');
 });
 
 router.get('/groceries', (request, response) => {
   if (!request.session.username) {
     response.render("groceries.hbs", {
+      products: groceries_products,
       loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
       imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
     });
   } else {
     response.render('groceries.hbs', {
+      products: groceries_products,
       cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
       loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
     });
@@ -79,11 +82,13 @@ router.get('/groceries', (request, response) => {
 router.get('/electronics', (request, response) => {
   if (!request.session.username) {
     response.render("electronics.hbs", {
+      products: electronics_products,
       loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
       imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
     });
   } else {
     response.render('electronics.hbs', {
+      products: electronics_products,
       cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
       loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
     });
@@ -93,11 +98,13 @@ router.get('/electronics', (request, response) => {
 router.get('/instruments', (request, response) => {
   if (!request.session.username) {
     response.render("instruments.hbs", {
+      products: instruments_products,
       loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
       imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
     });
   } else {
     response.render('instruments.hbs', {
+      products: instruments_products,
       cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
       loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
     });
@@ -146,7 +153,6 @@ const getVcodeImage = (req, res) => {
 router.get('/vcode',getVcodeImage);
 
 app.post('/login', (request, response) => {
-
   if (request.body.vcode != request.session.vcode) {
     response.render('landing.hbs', {
       popup: "<script>alert('Invalid Captcha Information, try again!')</script>",
@@ -161,6 +167,13 @@ app.post('/login', (request, response) => {
     if (err) {
       response.send('Unable to get login right now');
     }
+    if (result.length === 0) {
+      response.render('landing.hbs', {
+        popup: "<script>alert(\'Invalid Login Information, try again!')</script>",
+        loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
+        imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
+      });
+    }
     for (i=0; i < result.length; i++) {
       if (request.body.username === result[i].username) {
         if (request.body.password === result[i].password) {
@@ -172,7 +185,7 @@ app.post('/login', (request, response) => {
           });
         } else {
           response.render('landing.hbs', {
-            popup: "<script>alert(\'Invalid Login Information, try again!'</script>",
+            popup: "<script>alert(\'Invalid Login Information, try again!')</script>",
             loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
             imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
           });
@@ -210,7 +223,7 @@ app.post('/register', function (request, response) {
   });
 });
 
-app.get('/logout', (request, response) => {
+app.get('/logout', redirectNotLoggedIn, (request, response) => {
   request.session.destroy(err => {
     if (err) {
       response.render('landing.hbs');
@@ -221,6 +234,23 @@ app.get('/logout', (request, response) => {
       imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
     });
   });
+});
+
+app.get('/add_cart/:id', redirectNotLoggedIn, (request, response) => {
+  var cart = request.session.cart;
+  for (i=0; i < all_items.length; i++) {
+    if (request.params.id === all_items[i].id) {
+      cart.push(all_items[i]);
+      break;
+    }
+  }
+  var db = utils.getDb();
+  var myquery = { username: `${request.session.username}` };
+  var newvalues = { $set: { cart: request.session.cart} };
+  db.collection("users").updateOne(myquery, newvalues, function(err, res) {
+    if (err) throw err;
+  });
+  response.redirect('/')
 });
 
 app.use(function(req, res) {
