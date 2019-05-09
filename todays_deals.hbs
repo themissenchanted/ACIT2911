@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/deals.css">
-    <link rel="stylesheet" href="css/landing.css">
-    <link rel="icon" href="img/HatLogo.png">
-    <title>Deal of the Day</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="css/general.css">
+  <link rel="stylesheet" href="css/deals.css">
+  <link rel="icon" href="img/HatLogo.png">
+  <title>Deal of the Day</title>
 </head>
 <body>
 {{> fakeNavBar }}
@@ -117,28 +118,52 @@
     </div>
 </div>
 
-<div class="jumbotron">
-    <h1 class="display-4">Deal of the Day!</h1>
-    <hr class="my-4">
-    <div id="test1">
+<div class="card">
+  <div class="card-body">
+    <div class="jumbotron mt-5">
+      <h1 class="display-4">Deal of the Day!</h1>
+      <hr class="my-4">
+      <div id="test1">
         <img src="img/treasure.jpg" height="200" width="200" alt="treasure">
-    </div>
-    <div class="pl-4" id="test2">
+      </div>
+      <div class="pl-4" id="test2">
         <h3>Item Name</h3>
         <p>Description</p>
         <input type="text" id="quantity">
         <button class="btn btn-pink" type="button">Add to Cart</button>
+      </div>
     </div>
+  </div>
 </div>
 {{{popup}}}
-</div>
-<footer class="text-center mt-5">copyright, and stuff</footer>
+<footer class="mt-5 footer">
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <!-- The overlay -->
+  <div id="myFooter" class="footeroverlay">
+
+    <!-- Button to close the overlay navigation -->
+    <a href="javascript:void(0)" class="closebtn" onclick="closeFooter()">&times;</a>
+
+    <!-- Overlay content -->
+    <div class="overlay-content">
+      <a href="#">About Us</a>
+      <a href="#">Services</a>
+      <a href="#">Join Us</a>
+      <a href="#">Contact Us</a>
+    </div>
+
+  </div>
+
+  <!-- Use any element to open/show the overlay navigation menu -->
+  <button onclick="openFooter()" id="open">Info</button>
+
+</footer>
 <!--Scripts-->
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="slick/slick.min.js"></script>
 
-<script src="landing.js"></script>
+<script type="text/javascript" src="landing.js"></script>
 
 <script src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

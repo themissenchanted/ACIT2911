@@ -1,0 +1,43 @@
+.main-img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 50vh;
+}
+
+.main-title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40%;
+  color: white;
+  background-image: linear-gradient(to right, rgba(26, 26, 26, 0.5), rgba(255, 255, 255, 0));
+}
+
+.product-img {
+  height: 150px;
+}
+
+.product-card {
+  height: 425px;
+  padding: 20px;
+  margin: 10px;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 15px 50px 30px 5px;
+  background-color: white;
+}
+
+.cart-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 25px;
+}
+
+.img-fit {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
