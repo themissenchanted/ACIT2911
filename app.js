@@ -190,6 +190,12 @@ app.post('/login', (request, response) => {
             imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
           });
         }
+      } else {
+        response.render('landing.hbs', {
+          popup: '<script>alert("Invalid Login Information, try again!")</script>',
+          loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
+          imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
+        });
       }
     }
   });
