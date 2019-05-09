@@ -234,8 +234,17 @@ app.get('/add_cart/:id', redirectNotLoggedIn, (request, response) => {
   var cart = request.session.cart;
   for (i=0; i < all_items.length; i++) {
     if (request.params.id === all_items[i].id) {
-      cart.push(all_items[i]);
-      break;
+      try {
+        if (request.params.id === request.session.cart[i].id) {
+          request.session.cart[i].qty += 1;
+          break;
+        } else {
+          cart.push(all_items[i]);
+          break;
+        }
+      } catch (e) {
+        cart.push(all_items[i]);
+      }
     }
   }
   var db = utils.getDb();
