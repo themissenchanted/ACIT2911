@@ -80,14 +80,33 @@ describe("GET /unknownPage", function () {
     })
 });
 
-describe("POST /add_cart/:id", function () {
-    it('should add something to the cart', function (done) {
-        chai.request(app)
-            .get('/add_cart/headphones1')
-            .end(function(err, res) {
-                expect(res).to.have.status(200);
-                expect(res).to.redirect;
-                done();
-        })
-    })
+describe("Test Login", function () {
+    it("should produce 'Authenticated'", (done) => {
+        let result = tdd.login('username1', 'password1');
+        assert.equal(result, "Authenticated");
+        done();
+    });
+    it("should produce 'Authenticated'", (done) => {
+        let result = tdd.login('username2', 'password2');
+        assert.equal(result, "Authenticated");
+        done();
+    });
+    it("should produce 'Denied'", (done) => {
+        let result =tdd.login('fake_username', 'fake_password');
+        assert.equal(result, "Denied");
+        done();
+    });
+});
+
+describe("Test Prime", function () {
+    it("should return 'Prime'", (done) => {
+        let result = tdd.isPrime(7);
+        assert.equal(result, "Prime");
+        done();
+    });
+    it("should return 'Not Prime'", (done) => {
+        let result = tdd.isPrime(4);
+        assert.equal(result, "Not Prime");
+        done();
+    });
 });
