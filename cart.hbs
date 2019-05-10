@@ -176,12 +176,12 @@
       </tr>
       <tr>
         <th>Total:</th>
-        <td>${{total}}</td>
+        <td id="total">${{total}}</td>
       </tr>
     </table>
   </div>
   <div class="col-4" style="position: relative;">
-    <a class="btn btn-pink btn-md checkout-button" href="#">Checkout</a>
+    <a class="btn btn-pink btn-md checkout-button" onClick="checkout()" href="#">Checkout</a>
   </div>
 </div>
 
@@ -263,6 +263,14 @@
   $("#captchapng").click(function(){
     $("#captchapng").attr('src',`/vcode?randomId=${Math.random()}`)
   });
+</script>
+<script>
+    function checkout() {
+        var string = "Are you sure you want to place your order for ";
+        if (confirm(string + document.getElementById('total').innerText)) {
+            document.location.href = '/checkout';
+        }
+    }
 </script>
 </body>
 </html>

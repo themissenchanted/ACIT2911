@@ -304,6 +304,17 @@ app.post('/update_cart', redirectNotLoggedIn, (request, response) => {
     response.redirect('/cart')
 });
 
+app.get('/checkout', redirectNotLoggedIn, (request, response) => {
+    request.session.cart = [];
+    var db = utils.getDb();
+    var myquery = { username: `${request.session.username}` };
+    var newvalues = { $set: { cart: request.session.cart} };
+    db.collection("users").updateOne(myquery, newvalues, function(err, res) {
+        if (err) throw err;
+    });
+    response.redirect('/');
+});
+
 app.use(function(req, res) {
     res.redirect("/");
 });
