@@ -5,6 +5,10 @@
   height: 50vh;
 }
 
+.text-shadow {
+  text-shadow: 4px 4px 4px #aaa;
+}
+
 .main-title {
   position: absolute;
   bottom: 0;
