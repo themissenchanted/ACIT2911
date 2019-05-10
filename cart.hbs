@@ -142,23 +142,23 @@
   <div class="col-2">
       {{{this.cartImg}}}
   </div>
-  <div class="col-7 my-auto">
+  <div class="col-5 my-auto">
     <h2 class="my-auto">{{this.title}}</h2>
   </div>
-  <div class="col-3 my-auto">
+  <div class="col-5 my-auto" style="position: relative;">
     <form method="post" class="form-inline my-auto my-auto pull-right" action="/update_cart" >
-      <p class="my-auto">quantity</p>
-      <label class="my-1 mr-2" for="{{this.id}}"></label>
-        <input type="number" max="5" min="1" name="qty" value="{{this.qty}}" id="{{this.id}}" maxlength="1">
-        <input type="hidden" name="{{this.id}}" value="3487">
-      <div>
-        <p class="my-auto">&times; ${{this.price}}</p>
-      </div>
-        <div class="col-4" style="position: relative;">
-            <label>
-                <input class="btn btn-pink btn-md update-button" value="Update Cart" type="submit">
-            </label>
+        <p class="my-auto">quantity</p>
+        <label class="my-1 mr-2" for="{{this.id}}"></label>
+          <input type="number" max="5" min="1" name="qty" value="{{this.qty}}" id="{{this.id}}" maxlength="1" class="mr-2">
+          <input type="hidden" name="{{this.id}}" value="3487">
+        <div>
+          <p class="my-auto"> &times; ${{this.price}}</p>
         </div>
+      <div class="col-4" style="position: absolute; right: 0;">
+          <label>
+              <input class="btn btn-pink btn-md update-button" value="Update Cart" type="submit">
+          </label>
+      </div>
     </form>
   </div>
 </div>
