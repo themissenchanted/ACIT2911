@@ -6,6 +6,7 @@ const hbs = require('hbs');
 const cart_string = "'s Cart";
 const captchapng = require("captchapng");
 const session = require('express-session');
+const arrSum = require('./tdd');
 
 var electronics_products = require('./data/electronics');
 var instruments_products = require('./data/instruments');
@@ -64,11 +65,6 @@ router.get('/cart', redirectNotLoggedIn, (request, response) => {
     for (i=0; i < request.session.cart.length; i++) {
         sub_total.push(request.session.cart[i].price * request.session.cart[i].qty);
     }
-    var arrSum = (arr) => {
-        return arr.reduce(function(a,b){
-            return a + b
-        }, 0);
-    };
     if (!request.session.username) {
         response.render("cart.hbs", {
             items: request.session.cart,
@@ -80,9 +76,9 @@ router.get('/cart', redirectNotLoggedIn, (request, response) => {
             items: request.session.cart,
             cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
-            sub_total: Math.round(arrSum(sub_total) * 100) / 100,
-            tax: Math.round((arrSum(sub_total) * 0.12) * 100) / 100,
-            total: Math.round((arrSum(sub_total) * 1.12) * 100) / 100,
+            sub_total: Math.round(arrSum.arrSum(sub_total) * 100) / 100,
+            tax: Math.round((arrSum.arrSum(sub_total) * 0.12) * 100) / 100,
+            total: Math.round((arrSum.arrSum(sub_total) * 1.12) * 100) / 100,
         });
     }
 });

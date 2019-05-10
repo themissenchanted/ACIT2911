@@ -266,7 +266,7 @@
 </script>
 <script>
     function checkout() {
-        var string = "Are you sure you want to place your order for ";
+        const string = "Are you sure you want to place your order for ";
         if (confirm(string + document.getElementById('total').innerText)) {
             document.location.href = '/checkout';
         }

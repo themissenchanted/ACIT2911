@@ -10,7 +10,7 @@ var chai = require('chai'), chaiHttp = require('chai-http');
 
 chai.use(chaiHttp);
 
-const app = require('./app');
+const app = require('./app.js');
 const tdd = require('./tdd.js');
 
 describe('GET /', function () {
@@ -57,6 +57,67 @@ describe('GET /instruments', function () {
     });
 });
 
+describe('GET /todays_deals', function () {
+    it("should return todays_deals webpage", function (done) {
+        chai.request(app)
+            .get('/todays_deals')
+            .end(function(err, res) {
+                expect(res).to.have.status(200);
+                done();
+            })
+    });
+});
+
+describe('GET /cart', function () {
+    it("should return the users cart", function (done) {
+        chai.request(app)
+            .get('/cart')
+            .end(function(err, res) {
+                expect(res).to.have.status(200);
+                done();
+            })
+    });
+});
+
+describe('POST /add_cart/:id', function () {
+    it("should add something to the cart and redirect to the cart page", function (done) {
+        chai.request(app)
+            .post('/add_cart/headphones1')
+            .send({
+            "id": "headphones1",
+            "img": "<img class=\"card-img-top img-fit\" src=\"img/products/electronics/headphones.png\" alt=\"Card image cap\">",
+            "title": "Slick Headphones",
+            "description": "Amazing look. Amazing sound. Amazing taste.",
+            "price": 89.99,
+            "qty": 1,
+            "cartImg": "<img src=\"img/products/electronics/headphones.png\" class=\"img-fit cart-img\" alt=\"cart item image\">"
+        });
+                done();
+    });
+});
+
+describe('GET /checkout', function () {
+    it("should run the checkout functions", function (done) {
+        chai.request(app)
+            .get('/cart')
+            .end(function(err, res) {
+                expect(res).to.have.status(200);
+                done();
+            })
+    });
+});
+
+describe('GET /vcode', function () {
+    it("should return the users cart", function (done) {
+        chai.request(app)
+            .get('/cart')
+            .end(function(err, res) {
+                expect(res).to.have.status(200);
+                done();
+            })
+    });
+});
+
 describe("POSTS /register", function () {
     it('should signup as mocha@gmail.com ', (done) => {
         chai.request.agent(app)
@@ -66,6 +127,18 @@ describe("POSTS /register", function () {
                 password: "Test1234",
             });
             done();
+    });
+});
+
+describe("POSTS /login", function () {
+    it('should login as mocha@gmail.com ', (done) => {
+        chai.request.agent(app)
+            .post('/login')
+            .send({
+                username: "mocha@gmail.com",
+                password: "Test1234",
+            });
+        done();
     });
 });
 
@@ -80,33 +153,10 @@ describe("GET /unknownPage", function () {
     })
 });
 
-describe("Test Login", function () {
-    it("should produce 'Authenticated'", (done) => {
-        let result = tdd.login('username1', 'password1');
-        assert.equal(result, "Authenticated");
+describe("Summing Arrays", function () {
+    it("should sum all the values inside an array", function (done) {
+        let sum = tdd.arrSum([1, 2, 3]);
+        assert.equal(sum, 6);
         done();
-    });
-    it("should produce 'Authenticated'", (done) => {
-        let result = tdd.login('username2', 'password2');
-        assert.equal(result, "Authenticated");
-        done();
-    });
-    it("should produce 'Denied'", (done) => {
-        let result =tdd.login('fake_username', 'fake_password');
-        assert.equal(result, "Denied");
-        done();
-    });
-});
-
-describe("Test Prime", function () {
-    it("should return 'Prime'", (done) => {
-        let result = tdd.isPrime(7);
-        assert.equal(result, "Prime");
-        done();
-    });
-    it("should return 'Not Prime'", (done) => {
-        let result = tdd.isPrime(4);
-        assert.equal(result, "Not Prime");
-        done();
-    });
+    })
 });
