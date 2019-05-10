@@ -133,6 +133,10 @@ body {
   padding-right: 1rem;
 }
 
+.update-button {
+  font-size: 12px;
+}
+
 /***************** Footer *******************/
 .footer {
   background-color: rgba(232, 29, 99, 0.5);

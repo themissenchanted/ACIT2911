@@ -5,7 +5,8 @@
     "title": "Slick Headphones",
     "description": "Amazing look. Amazing sound. Amazing taste.",
     "price": 89.99,
-    "qty": 1
+    "qty": 1,
+    "cartImg": "<img src=\"img/products/electronics/headphones.png\" class=\"img-fit cart-img\" alt=\"cart item image\">"
   },
   {
     "id": "ipod1",
@@ -13,7 +14,8 @@
     "title": "iPod Shuffle",
     "description": "Music only sounds good if you have one of these babies",
     "price": 79.99,
-    "qty": 1
+    "qty": 1,
+    "cartImg": "<img src=\"img/products/electronics/ipod.png\" class=\"img-fit cart-img\" alt=\"cart item image\">"
   },
   {
     "id": "laptop1",
@@ -21,7 +23,8 @@
     "title": "Razer Laptop",
     "description": "Buy this, and you instantly gain 4 ranks in league.",
     "price": 1899.99,
-    "qty": 1
+    "qty": 1,
+    "cartImg": "<img src=\"img/products/electronics/laptop.png\" class=\"img-fit cart-img\" alt=\"cart item image\">"
   },
   {
     "id": "mouse1",
@@ -29,7 +32,8 @@
     "title": "Gaming Mouse",
     "description": "Click Heads, it's that simple.",
     "price": 149.99,
-    "qty": 1
+    "qty": 1,
+    "cartImg": "<img src=\"img/products/electronics/mouse.png\" class=\"img-fit cart-img\" alt=\"cart item image\">"
   },
   {
     "id": "tv1",
@@ -37,6 +41,7 @@
     "title": "4K TV",
     "description": "Amazing look. Amazing sound. Amazing taste.",
     "price": 499.99,
-    "qty": 1
+    "qty": 1,
+    "cartImg": "<img src=\"img/products/electronics/tv.webp\" class=\"img-fit cart-img\" alt=\"cart item image\">"
   }
 ]

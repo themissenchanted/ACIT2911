@@ -60,7 +60,31 @@ router.get('/', (request, response) => {
 });
 
 router.get('/cart', redirectNotLoggedIn, (request, response) => {
-    response.render('cart.hbs');
+    var sub_total = [];
+    for (i=0; i < request.session.cart.length; i++) {
+        sub_total.push(request.session.cart[i].price * request.session.cart[i].qty);
+    }
+    var arrSum = (arr) => {
+        return arr.reduce(function(a,b){
+            return a + b
+        }, 0);
+    };
+    if (!request.session.username) {
+        response.render("cart.hbs", {
+            items: request.session.cart,
+            loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
+            imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">',
+        });
+    } else {
+        response.render('cart.hbs', {
+            items: request.session.cart,
+            cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
+            loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
+            sub_total: Math.round(arrSum(sub_total) * 100) / 100,
+            tax: Math.round((arrSum(sub_total) * 0.12) * 100) / 100,
+            total: Math.round((arrSum(sub_total) * 1.12) * 100) / 100,
+        });
+    }
 });
 
 router.get('/groceries', (request, response) => {
@@ -260,7 +284,24 @@ app.get('/add_cart/:id', redirectNotLoggedIn, (request, response) => {
     db.collection("users").updateOne(myquery, newvalues, function(err, res) {
         if (err) throw err;
     });
-    response.redirect('/')
+    response.redirect('/cart')
+});
+
+app.post('/update_cart', redirectNotLoggedIn, (request, response) => {
+    const keys = Object.keys(request.body);
+    var item = keys[1];
+    for (i=0; i < request.session.cart.length; i++) {
+        if (request.session.cart[i].id === item) {
+            request.session.cart[i].qty = request.body.qty;
+        }
+    }
+    var db = utils.getDb();
+    var myquery = { username: `${request.session.username}` };
+    var newvalues = { $set: { cart: request.session.cart} };
+    db.collection("users").updateOne(myquery, newvalues, function(err, res) {
+        if (err) throw err;
+    });
+    response.redirect('/cart')
 });
 
 app.use(function(req, res) {
