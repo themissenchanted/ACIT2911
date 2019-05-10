@@ -103,14 +103,6 @@ describe("GET /unknownPage", function () {
     })
 });
 
-describe("Summing Arrays", function () {
-    it("should sum all the values inside an array", function (done) {
-        let sum = tdd.arrSum([1, 2, 3]);
-        assert.equal(sum, 6);
-        done();
-    })
-});
-
 describe('GET /vcode', function () {
     it("should return the users cart", function (done) {
         chai.request(app)
@@ -171,4 +163,12 @@ describe("POSTS /update_cart", function () {
             });
         done();
     });
+});
+
+describe("Summing Arrays", function () {
+    it("should sum all the values inside an array", function (done) {
+        let sum = tdd.arrSum([1, 2, 3]);
+        assert.equal(sum, 6);
+        done();
+    })
 });
