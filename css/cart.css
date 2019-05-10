@@ -122,6 +122,7 @@ body {
 .cart-img {
   left: 0;
   width: 100px;
+  height: 11vh;
   padding: 5px 0;
   float: left;
 }
