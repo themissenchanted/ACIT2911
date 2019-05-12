@@ -6,7 +6,8 @@
     "description": "If you have toast..... enough said",
     "price": 2.99,
     "qty": 1,
-    "cartImg": "<img src=\"img/products/groceries/butter.png\" class=\"img-fit cart-img\" alt=\"cart item image\">"
+    "cartImg": "<img src=\"img/products/groceries/butter.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 30
   },
   {
     "id": "chips1",
@@ -15,7 +16,8 @@
     "description": "Crispy, Salty, and always leaves you wanting more",
     "price": 3.99,
     "qty": 1,
-    "cartImg": "<img src=\"img/products/groceries/chips.png\" class=\"img-fit cart-img\" alt=\"cart item image\">"
+    "cartImg": "<img src=\"img/products/groceries/chips.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 40
   },
   {
     "id": "coke1",
@@ -24,7 +26,8 @@
     "description": "The OG of soft drinks, stock up",
     "price": 1.99,
     "qty": 1,
-    "cartImg": "<img src=\"img/products/groceries/coke.png\" class=\"img-fit cart-img\" alt=\"cart item image\">"
+    "cartImg": "<img src=\"img/products/groceries/coke.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 20
   },
   {
     "id": "eggs1",
@@ -33,7 +36,8 @@
     "description": "Don't be mistaken, they taste just as good as brown eggs",
     "price": 4.99,
     "qty": 1,
-    "cartImg": "<img src=\"img/products/groceries/eggs.png\" class=\"img-fit cart-img\" alt=\"cart item image\">"
+    "cartImg": "<img src=\"img/products/groceries/eggs.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 50
   },
   {
     "id": "steak1",
@@ -42,6 +46,7 @@
     "description": "Its almost summer, fire up that BBQ and get cook'in with these bad boys",
     "price": 8.99,
     "qty": 1,
-    "cartImg": "<img src=\"img/products/groceries/steak.png\" class=\"img-fit cart-img\" alt=\"cart item image\">"
+    "cartImg": "<img src=\"img/products/groceries/steak.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 90
   }
 ]

@@ -40,7 +40,15 @@ app.use(session({
 
 const redirectNotLoggedIn = (req, res, next) => {
     if (!req.session.username) {
-        res.redirect('/')
+        res.render("landing.hbs", {
+            loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
+            imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">',
+            modal: '<script type="text/javascript">\n' +
+                '    $(window).on(\'load\',function(){\n' +
+                '        $(\'#signup\').modal(\'show\');\n' +
+                '    });\n' +
+                '</script>'
+        });
     } else {
         next()
     }
@@ -177,7 +185,12 @@ app.post('/login', (request, response) => {
         response.render('landing.hbs', {
             popup: "<script>alert('Invalid Captcha Information, try again!')</script>",
             loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
-            imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
+            imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">',
+            modal: '<script type="text/javascript">\n' +
+                '    $(window).on(\'load\',function(){\n' +
+                '        $(\'#login\').modal(\'show\');\n' +
+                '    });\n' +
+                '</script>'
         });
         return;
     }
@@ -197,8 +210,9 @@ app.post('/login', (request, response) => {
         for (i=0; i < result.length; i++) {
             if (request.body.username === result[i].username) {
                 if (request.body.password === result[i].password) {
-                    request.session.username = request.body.username;
+                    request.session.username = result[i].username;
                     request.session.cart = result[i].cart;
+                    request.session.points = result[i].points;
                     response.render('landing.hbs', {
                         cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.body.username + cart_string}</a></li>`,
                         loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
@@ -224,11 +238,13 @@ app.post('/login', (request, response) => {
 app.post('/register', function (request, response) {
     var db = utils.getDb();
     request.body.cart = [];
+    request.body.points = 0;
     db.collection('users').find({username: `${request.body.username}`}).toArray().then(function (result) {
         if (result.length === 0) {
             db.collection('users').insertOne(request.body);
             request.session.username = request.body.username;
             request.session.cart = request.body.cart;
+            request.session.points = request.body.points;
             response.render('landing.hbs', {
                 cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
                 loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>'
@@ -237,7 +253,12 @@ app.post('/register', function (request, response) {
             response.render('landing.hbs', {
                 popup: '<script>alert(\'Account already exists with that username, try again!\')</script>\n',
                 loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
-                imgTag: '<img id="captchapng" src="/vcode" alt="Smiley Face" height="30" width="80">'
+                imgTag: '<img id="captchapng" src="/vcode" alt="Smiley Face" height="30" width="80">',
+                modal: '<script type="text/javascript">\n' +
+                    '    $(window).on(\'load\',function(){\n' +
+                    '        $(\'#signup\').modal(\'show\');\n' +
+                    '    });\n' +
+                    '</script>'
             });
         }
     });
@@ -257,7 +278,6 @@ app.get('/logout', redirectNotLoggedIn, (request, response) => {
 });
 
 app.get('/add_cart/:id', redirectNotLoggedIn, (request, response) => {
-    var cart = request.session.cart;
     for (i=0; i < all_items.length; i++) {
         if (request.params.id === all_items[i].id) {
             try {
@@ -265,11 +285,11 @@ app.get('/add_cart/:id', redirectNotLoggedIn, (request, response) => {
                     request.session.cart[i].qty += 1;
                     break;
                 } else {
-                    cart.push(all_items[i]);
+                    request.session.cart.push(all_items[i]);
                     break;
                 }
             } catch (e) {
-                cart.push(all_items[i]);
+                request.session.cart.push(all_items[i]);
                 break;
             }
         }
@@ -301,10 +321,13 @@ app.post('/update_cart', redirectNotLoggedIn, (request, response) => {
 });
 
 app.get('/checkout', redirectNotLoggedIn, (request, response) => {
+    for (i=0; i < request.session.cart.length; i++) {
+        request.session.points += (request.session.cart[i].price / 4)
+    }
     request.session.cart = [];
     var db = utils.getDb();
     var myquery = { username: `${request.session.username}` };
-    var newvalues = { $set: { cart: request.session.cart} };
+    var newvalues = { $set: { cart: request.session.cart, points: Math.round(request.session.points)} };
     db.collection("users").updateOne(myquery, newvalues, function(err, res) {
         if (err) throw err;
     });

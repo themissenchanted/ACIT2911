@@ -152,7 +152,7 @@
           <input type="number" max="5" min="1" name="qty" value="{{this.qty}}" id="{{this.id}}" maxlength="1" class="mr-2">
           <input type="hidden" name="{{this.id}}" value="3487">
         <div>
-          <p class="my-auto"> &times; ${{this.price}}</p>
+          <p class="my-auto"> &times; ${{this.price}} or {{this.points}} Points</p>
         </div>
       <div class="col-4" style="position: absolute; right: 0;">
           <label>
@@ -181,7 +181,7 @@
     </table>
   </div>
   <div class="col-4" style="position: relative;">
-    <a class="btn btn-pink btn-md checkout-button" onClick="checkout()" href="#">Checkout</a>
+    <a class="btn btn-pink btn-md checkout-button" onClick="checkout()" href="#">Checkout With Money</a>
   </div>
 </div>
 
