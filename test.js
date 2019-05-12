@@ -11,7 +11,7 @@ var chai = require('chai'), chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
 const app = require('./app.js');
-const tdd = require('./tdd.js');
+const tdd = require('./arrMethods.js');
 
 describe('GET /', function () {
     it("should return landing page", function (done) {

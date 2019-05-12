@@ -149,7 +149,7 @@
     <form method="post" class="form-inline my-auto my-auto pull-right" action="/update_cart" >
         <p class="my-auto">quantity</p>
         <label class="my-1 mr-2" for="{{this.id}}"></label>
-          <input type="number" max="5" min="1" name="qty" value="{{this.qty}}" id="{{this.id}}" maxlength="1" class="mr-2">
+          <input type="number" max="5" min="0" name="qty" value="{{this.qty}}" id="{{this.id}}" maxlength="1" class="mr-2">
           <input type="hidden" name="{{this.id}}" value="3487">
         <div>
           <p class="my-auto"> &times; ${{this.price}} or {{this.points}} Points</p>

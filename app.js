@@ -6,7 +6,7 @@ const hbs = require('hbs');
 const cart_string = "'s Cart";
 const captchapng = require("captchapng");
 const session = require('express-session');
-const arrSum = require('./tdd');
+const arr = require('./arrMethods');
 
 var electronics_products = require('./data/electronics');
 var instruments_products = require('./data/instruments');
@@ -84,9 +84,9 @@ router.get('/cart', redirectNotLoggedIn, (request, response) => {
             items: request.session.cart,
             cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
-            sub_total: Math.round(arrSum.arrSum(sub_total) * 100) / 100,
-            tax: Math.round((arrSum.arrSum(sub_total) * 0.12) * 100) / 100,
-            total: Math.round((arrSum.arrSum(sub_total) * 1.12) * 100) / 100,
+            sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
+            tax: Math.round((arr.arrSum(sub_total) * 0.12) * 100) / 100,
+            total: Math.round((arr.arrSum(sub_total) * 1.12) * 100) / 100,
         });
     }
 });
@@ -308,9 +308,14 @@ app.post('/update_cart', redirectNotLoggedIn, (request, response) => {
     var item = keys[1];
     for (i=0; i < request.session.cart.length; i++) {
         if (request.session.cart[i].id === item) {
-            request.session.cart[i].qty = request.body.qty;
+            if (request.body.qty == 0) {
+                delete request.session.cart[i];
+            } else {
+                request.session.cart[i].qty = request.body.qty;
+            }
         }
     }
+    request.session.cart = arr.arrayRemove(request.session.cart, null);
     var db = utils.getDb();
     var myquery = { username: `${request.session.username}` };
     var newvalues = { $set: { cart: request.session.cart} };
