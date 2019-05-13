@@ -1,0 +1,32 @@
+/* Cart Stuff */
+.main-img {
+  background-image: url("../img/cart.jpeg");
+}
+
+/**************** Cart CSS *****************/
+.cart-item {
+  height: 12vh;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 15px;
+  background-image: linear-gradient(to left, rgb(247, 247, 247), white);
+}
+
+.cart-img {
+  left: 0;
+  width: 100px;
+  height: 11vh;
+  padding: 5px 0;
+  float: left;
+}
+
+.checkout-button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-right: 1rem;
+}
+
+.update-button {
+  font-size: 12px;
+}

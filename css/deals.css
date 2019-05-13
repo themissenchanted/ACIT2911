@@ -1,9 +1,15 @@
-#test1 {
-    display: inline-block;
-}
-#test2 {
+.div-sidebyside {
     display: inline-block;
 }
 #quantity {
     width: 50px;
+}
+.container {
+    padding-top: 12vh;
+}
+body {
+    height: 100vh;
+}
+.main-img {
+    background-image: url("../img/deal.png");
 }
