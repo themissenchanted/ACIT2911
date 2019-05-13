@@ -19,7 +19,7 @@
 }
 
 .product-card {
-  height: 500px;
+  height: 450px;
   padding: 20px;
   margin: 10px;
   border-color: black;
@@ -40,4 +40,22 @@
   height: 100%;
   width: 100%;
   object-fit: contain;
+}
+
+.sticky-cart {
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 30px;
+  background-color: white;
+  height: 60vh;
+  width: 80%;
+  position: sticky;
+  top: 70px;
+  left: 0;
+}
+
+.cart-stuff {
+  overflow-y: auto;
+  height: 40vh;
 }

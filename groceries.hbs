@@ -139,27 +139,57 @@
     <div class="main-img">
         <h1 class="main-title mb-0 pt-5">Groceries</h1>
     </div>
-    <div class="container">
+    <div class="row">
+      <div class="col-9">
         <div class="row justify-content-center">
-            {{# each products}}
-            <div class="product-card" style="width: 16rem; position: relative;" id="{{this.id}}">
-                <div class="product-img">
-                    {{{this.img}}}
-                </div>
-                <div class="card-body align-items-center text-center">
-                    <h5 class="card-title text-center">{{this.title}}</h5>
-                    <p class="card-text">{{this.description}}</p>
-                    <div class="cart-info">
-                        <h3>${{this.price}}</h3>
-                        <h6>Points Cost: {{this.points}}</h6>
-                        <a href="/add_cart/{{this.id}}" class="btn btn-pink">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            {{/each}}
+              {{# each products}}
+              <div class="product-card" style="width: 16rem; position: relative;" id="{{this.id}}">
+                  <div class="product-img">
+                      {{{this.img}}}
+                  </div>
+                  <div class="card-body align-items-center text-center">
+                      <h5 class="card-title text-center">{{this.title}}</h5>
+                      <p class="card-text">{{this.description}}</p>
+                      <div class="cart-info">
+                          <h3>${{this.price}}</h3>
+                          <h6>Points Cost: {{this.points}}</h6>
+                          <a href="/add_cart/{{this.id}}" class="btn btn-pink">Add to Cart</a>
+                      </div>
+                  </div>
+              </div>
+              {{/each}}
         </div>
-        {{{popup}}}
+      </div>
+      <div class="col-3">
+        <div class="sticky-cart mt-2 pl-1">
+          <h3 class="text-center">My Cart</h3>
+          <div class="cart-stuff">
+            <div>
+              <h4><strong>Item Name</strong></h4>
+              <p>$9.99</p>
+            </div>
+            <div>
+              <h4><strong>Item Name</strong></h4>
+              <p>$9.99</p>
+            </div>
+            <div>
+              <h4><strong>Item Name</strong></h4>
+              <p>$9.99</p>
+            </div>
+            <div>
+              <h4><strong>Item Name</strong></h4>
+              <p>$9.99</p>
+            </div>
+            <div>
+              <h4><strong>Item Name</strong></h4>
+              <p>$9.99</p>
+            </div>
+          </div>
+          <a href="#" class="btn btn-pink">Checkout</a>
+        </div>
+      </div>
     </div>
+    {{{popup}}}
 
 <footer class="mt-5 footer">
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
