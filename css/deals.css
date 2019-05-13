@@ -7,3 +7,9 @@
 .container {
     padding-top: 12vh;
 }
+body {
+    height: 100vh;
+}
+.main-img {
+    background-image: url("../img/deal.png");
+}
