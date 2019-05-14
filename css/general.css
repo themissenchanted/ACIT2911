@@ -11,6 +11,28 @@ body {
   opacity: 1;
 }
 
+.cart-icon {
+  height: 25px;
+  width: 25px;
+}
+
+.cart-menu {
+  padding: 5px;
+  color: white;
+  border: 1px solid rgba(210, 210, 210, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 1rem;
+}
+
+.cart-total {
+  font-weight: bold;
+  color: white;
+}
+
+.cart-button {
+  height: 1em;
+}
+
 /* Kevin's Stuff */
 .bottomblur {
   position: fixed;
@@ -37,7 +59,7 @@ body {
 
 /* edited bootstrap code */
 .navbg {
-  background-color: rgba(232, 29, 99, 0.5);
+  background-color: rgba(232, 29, 99, 0.7);
   position: fixed;
   width: 100%;
   z-index: 10;
@@ -58,10 +80,15 @@ body {
   color: #212529;
   text-align: left;
   list-style: none;
-  background-color: rgba(232, 29, 99, 0.4);
+  background-color: rgba(232, 29, 99, 0.7);
   background-clip: padding-box;
   border: 1px solid rgba(210, 210, 210, 0.5);
   border-radius: 0.25rem;
+}
+
+.cart-dropmenu {
+  width: 15rem;
+  padding: 10px;
 }
 
 .dropdown-item {
