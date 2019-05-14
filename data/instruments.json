@@ -64,6 +64,7 @@
     "cartImg": "<img src=\"img/products/instruments/triangle.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
     "points": 100,
     "dealsImg": "<img src=\"img/products/instruments/triangle.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+  }
   {
     "id": "flute1",
     "title": "Flute",
