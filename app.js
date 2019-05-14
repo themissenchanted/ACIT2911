@@ -135,17 +135,6 @@ router.get('/electronics', (request, response) => {
                             </div>
                         </div>
                     </div>
-                    <div class="cart-menu"><h5>Product Name</h5><p>$7.99</p>
-                        <div class="row">
-                            <div class="col-8">
-                              <p>quantity:</p>
-                            </div>
-                            <div class="col-4">
-                              <span><a href="#"><img src="img/minus.png" class="cart-button"></a> 2 <a><img src="img/plus.png" 
-                              class="cart-button"></a></span>
-                            </div>
-                        </div>
-                    </div>
                     <div class="cart-total">Total: $999.99</div>
                     <button class="btn btn-pink">Checkout</button>
                 </div></li>`,

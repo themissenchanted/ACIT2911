@@ -17,11 +17,11 @@ body {
 }
 
 .cart-menu {
-  padding: 5px;
+  padding: 10px;
   color: black;
   border: 1px solid rgba(210, 210, 210, 0.5);
-  background-color: rgb(255, 255, 255);
-  margin-bottom: 1rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
 }
 
 .cart-total {
