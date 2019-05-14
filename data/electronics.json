@@ -40,7 +40,8 @@
     "price": 149.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/electronics/mouse.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 1500
+    "points": 1500,
+    "dealsImg": "<img src=\"img/products/electronics/mouse.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "tv1",
@@ -50,7 +51,8 @@
     "price": 499.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/electronics/tv.webp\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 5000
+    "points": 5000,
+    "dealsImg": "<img src=\"img/products/electronics/tv.webp\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "keyboard1",
@@ -60,7 +62,8 @@
     "price": 120.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/electronics/keyboard.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 1200
+    "points": 1200,
+    "dealsImg": "<img src=\"img/products/electronics/keyboard.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "webcam1",
@@ -70,7 +73,8 @@
     "price": 99.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/electronics/webcam.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 990
+    "points": 990,
+    "dealsImg": "<img src=\"img/products/electronics/webcam.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "calculator1",
@@ -80,7 +84,8 @@
     "price": 10.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/electronics/calculator.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 100
+    "points": 100,
+    "dealsImg": "<img src=\"img/products/electronics/calculator.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "cord1",
@@ -90,7 +95,8 @@
     "price": 15.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/electronics/cord.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 150
+    "points": 150,
+    "dealsImg": "<img src=\"img/products/electronics/cord.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "gps1",
@@ -101,6 +107,6 @@
     "qty": 1,
     "cartImg": "<img src=\"img/products/electronics/gps.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
     "points": 2500,
-    "dealsImg": "<img src=\"img/products/electronics/tv.webp\" height=\"200\" width=\"200\" alt=\"treasure\">"
+    "dealsImg": "<img src=\"img/products/electronics/gps.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   }
 ]
