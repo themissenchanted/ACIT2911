@@ -91,7 +91,7 @@
     "id": "melodica1",
     "title": "Melodica",
     "img": "<img class=\"card-img-top img-fit\" src=\"img/products/instruments/melodica.png\" alt=\"Card image cap\">",
-    "description": "When you don't know if you want a harmonica or a piano. Also would be perfect to play in April",
+    "description": "When you don't know if you want a harmonica or a piano.",
     "price": 29.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/melodica.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",

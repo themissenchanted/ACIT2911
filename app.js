@@ -62,8 +62,7 @@ router.get('/', (request, response) => {
         });
     } else {
         response.render('landing.hbs', {
-            cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
-            loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
+            loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>'
         });
     }
 });
@@ -84,7 +83,6 @@ router.get('/cart', redirectNotLoggedIn, (request, response) => {
     } else {
         response.render('cart.hbs', {
             items: request.session.cart,
-            cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
             sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
             tax: Math.round((arr.arrSum(sub_total) * 0.12) * 100) / 100,
@@ -105,7 +103,6 @@ router.get('/groceries', (request, response) => {
     } else {
         response.render('groceries.hbs', {
             products: groceries_products,
-            cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
         });
     }
@@ -136,8 +133,7 @@ router.get('/instruments', (request, response) => {
     } else {
         response.render('instruments.hbs', {
             products: instruments_products,
-            cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
-            loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
+            loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>'
         });
     }
 });
@@ -160,7 +156,6 @@ router.get('/todays_deals', (request, response) => {
         });
     } else {
         response.render('todays_deals.hbs', {
-            cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
             item: request.session.deal
         });
@@ -236,8 +231,7 @@ app.post('/login', (request, response) => {
                     request.session.cart = result[i].cart;
                     request.session.points = result[i].points;
                     response.render('landing.hbs', {
-                        cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.body.username + cart_string}</a></li>`,
-                        loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
+                        loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>'
                     });
                 } else {
                     response.render('landing.hbs', {
@@ -276,7 +270,6 @@ app.post('/register', function (request, response) {
             request.session.cart = request.body.cart;
             request.session.points = request.body.points;
             response.render('landing.hbs', {
-                cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
                 loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>'
             });
         } else {
@@ -373,7 +366,6 @@ app.get('/checkout', redirectNotLoggedIn, (request, response) => {
     if (request.session.cart.length === 0) {
         response.render('cart.hbs', {
             items: request.session.cart,
-            cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
             sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
             tax: Math.round((arr.arrSum(sub_total) * 0.12) * 100) / 100,
@@ -398,7 +390,6 @@ app.get('/checkout', redirectNotLoggedIn, (request, response) => {
         if (err) throw err;
     });
     response.render('landing.hbs', {
-        cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
         loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
         orderPlaced: '<script>\n' +
             '    $(document).ready(function(){\n' +
@@ -422,7 +413,6 @@ app.get('/checkout_points', redirectNotLoggedIn, (request, response) => {
     if (request.session.cart.length === 0) {
         response.render('cart.hbs', {
             items: request.session.cart,
-            cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
             sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
             tax: Math.round((arr.arrSum(sub_total) * 0.12) * 100) / 100,
@@ -439,7 +429,6 @@ app.get('/checkout_points', redirectNotLoggedIn, (request, response) => {
     if (request.session.points < point_cost) {
         response.render('cart.hbs', {
             items: request.session.cart,
-            cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
             sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
             tax: Math.round((arr.arrSum(sub_total) * 0.12) * 100) / 100,
@@ -462,7 +451,6 @@ app.get('/checkout_points', redirectNotLoggedIn, (request, response) => {
             if (err) throw err;
         });
         response.render('landing.hbs', {
-            cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
             orderPlaced: '<script>\n' +
                 '    $(document).ready(function(){\n' +
