@@ -40,8 +40,7 @@
     "price": 149.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/electronics/mouse.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 1500,
-    "dealsImg": "<img src=\"img/products/electronics/mouse.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+    "points": 1500
   },
   {
     "id": "tv1",
@@ -51,7 +50,6 @@
     "price": 499.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/electronics/tv.webp\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 5000,
-    "dealsImg": "<img src=\"img/products/electronics/tv.webp\" height=\"200\" width=\"200\" alt=\"treasure\">"
+    "points": 5000
   }
 ]
