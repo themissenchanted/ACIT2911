@@ -7,7 +7,8 @@
     "price": 419.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/banjo.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 4200
+    "points": 4200,
+    "dealsImg": "<img src=\"img/products/instruments/banjo.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "clarinet1",
@@ -17,7 +18,8 @@
     "price": 399.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/clarinet.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 4000
+    "points": 4000,
+    "dealsImg": "<img src=\"img/products/instruments/clarinet.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "guitar1",
@@ -27,7 +29,8 @@
     "price": 499.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/guitar.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 5000
+    "points": 5000,
+    "dealsImg": "<img src=\"img/products/instruments/guitar.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "piano1",
@@ -37,7 +40,8 @@
     "price": 1999.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/piano.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 20000
+    "points": 20000,
+    "dealsImg": "<img src=\"img/products/instruments/piano.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "saxophone1",
@@ -47,7 +51,8 @@
     "price": 399.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/saxophone.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 4000
+    "points": 4000,
+    "dealsImg": "<img src=\"img/products/instruments/saxophone.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "triangle1",
@@ -57,6 +62,7 @@
     "price": 19.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/triangle.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 200
+    "points": 200,
+    "dealsImg": "<img src=\"img/products/instruments/triangle.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   }
 ]

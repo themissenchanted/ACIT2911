@@ -7,7 +7,8 @@
     "price": 89.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/electronics/headphones.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 900
+    "points": 900,
+    "dealsImg": "<img src=\"img/products/electronics/headphones.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "ipod1",
@@ -17,7 +18,8 @@
     "price": 79.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/electronics/ipod.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 800
+    "points": 800,
+    "dealsImg": "<img src=\"img/products/electronics/ipod.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "laptop1",
@@ -27,7 +29,8 @@
     "price": 1899.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/electronics/laptop.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 19000
+    "points": 19000,
+    "dealsImg": "<img src=\"img/products/electronics/laptop.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "mouse1",
@@ -48,55 +51,5 @@
     "qty": 1,
     "cartImg": "<img src=\"img/products/electronics/tv.webp\" class=\"img-fit cart-img\" alt=\"cart item image\">",
     "points": 5000
-  },
-  {
-    "id": "keyboard1",
-    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/electronics/keyboard.png\" alt=\"Card image cap\">",
-    "title": "Mechanical Keyboard",
-    "description": "Clickity Clackity",
-    "price": 120.99,
-    "qty": 1,
-    "cartImg": "<img src=\"img/products/electronics/keyboard.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 1200
-  },
-  {
-    "id": "webcam1",
-    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/electronics/webcam.png\" alt=\"Card image cap\">",
-    "title": "Web Camera",
-    "description": "Supporting long distance relationships with crisp, high quality.",
-    "price": 99.99,
-    "qty": 1,
-    "cartImg": "<img src=\"img/products/electronics/webcam.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 990
-  },
-  {
-    "id": "calculator1",
-    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/electronics/calculator.png\" alt=\"Card image cap\">",
-    "title": "Calculator",
-    "description": "Reliable friend who will guide you through the scariest math exams",
-    "price": 10.99,
-    "qty": 1,
-    "cartImg": "<img src=\"img/products/electronics/calculator.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 100
-  },
-  {
-    "id": "cord1",
-    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/electronics/cord.png\" alt=\"Card image cap\">",
-    "title": "Extension Cord",
-    "description": "20ft cable to enable that 20cm you really need",
-    "price": 15.99,
-    "qty": 1,
-    "cartImg": "<img src=\"img/products/electronics/cord.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 150
-  },
-  {
-    "id": "gps1",
-    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/electronics/gps.png\" alt=\"Card image cap\">",
-    "title": "GPS Navigator",
-    "description": "A shepherd to lead its flock",
-    "price": 250.99,
-    "qty": 1,
-    "cartImg": "<img src=\"img/products/electronics/gps.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 2500
   }
 ]

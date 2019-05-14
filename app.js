@@ -172,16 +172,27 @@ router.get('/instruments', (request, response) => {
     }
 });
 
+router.get('/newItem', redirectNotLoggedIn, (request, response) => {
+    const item = [];
+    var randomItemIndex = Math.floor(Math.random() * all_items.length);
+    var randomItem = all_items[randomItemIndex];
+    item.push(randomItem);
+    request.session.deal = item;
+    response.redirect('/todays_deals');
+});
+
 router.get('/todays_deals', (request, response) => {
     if (!request.session.username) {
         response.render("todays_deals.hbs", {
             loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
-            imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
+            imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">',
+            item: request.session.deal
         });
     } else {
         response.render('todays_deals.hbs', {
             cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
+            item: request.session.deal
         });
     }
 });

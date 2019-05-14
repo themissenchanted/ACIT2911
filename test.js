@@ -20,7 +20,7 @@ describe('GET /', function () {
             .end(function(err, res) {
                 expect(res).to.have.status(200);
                 done();
-            })
+            });
     });
 });
 
@@ -31,7 +31,7 @@ describe('GET /groceries', function () {
             .end(function(err, res) {
                 expect(res).to.have.status(200);
                 done();
-            })
+            });
     });
 });
 
@@ -42,7 +42,7 @@ describe('GET /electronics', function () {
             .end(function(err, res) {
                 expect(res).to.have.status(200);
                 done();
-            })
+            });
     });
 });
 
@@ -53,7 +53,7 @@ describe('GET /instruments', function () {
             .end(function(err, res) {
                 expect(res).to.have.status(200);
                 done();
-            })
+            });
     });
 });
 
@@ -99,8 +99,8 @@ describe("GET /unknownPage", function () {
             .end(function(err, res) {
                 expect(res).to.redirect;
                 done();
-            })
-    })
+            });
+    });
 });
 
 describe('GET /vcode', function () {
