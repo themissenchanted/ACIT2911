@@ -30,6 +30,16 @@
     "points": 20
   },
   {
+    "id": "pepsi1",
+    "title": "Pepsi",
+    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/pepsi.png\" alt=\"Card image cap\">",
+    "description": "Better than Coke",
+    "price": 1.99,
+    "qty": 1,
+    "cartImg": "<img src=\"img/products/groceries/pepsi.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 20
+  },
+  {
     "id": "eggs1",
     "title": "White Eggs",
     "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/eggs.png\" alt=\"Card image cap\">",
@@ -40,6 +50,16 @@
     "points": 50
   },
   {
+    "id": "browneggs1",
+    "title": "Brown Eggs",
+    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/browneggs.png\" alt=\"Card image cap\">",
+    "description": "Free Range, Organic, Pasteur Raised, Non-GMO, Gluten Free Brown Eggs",
+    "price": 9.99,
+    "qty": 1,
+    "cartImg": "<img src=\"img/products/groceries/browneggs.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 80
+  },
+  {
     "id": "steak1",
     "title": "Steak",
     "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/steak.png\" alt=\"Card image cap\">",
@@ -48,5 +68,25 @@
     "qty": 1,
     "cartImg": "<img src=\"img/products/groceries/steak.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
     "points": 90
+  },
+  {
+    "id": "banana1",
+    "title": "Banana",
+    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/banana.png\" alt=\"Card image cap\">",
+    "description": "Bunch o' Bananas",
+    "price": 2.99,
+    "qty": 1,
+    "cartImg": "<img src=\"img/products/groceries/banana.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 30
+  },
+  {
+    "id": "apple1",
+    "title": "Apple",
+    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/apple.png\" alt=\"Card image cap\">",
+    "description": "An apple a day keeps the doctor away",
+    "price": 0.99,
+    "qty": 1,
+    "cartImg": "<img src=\"img/products/groceries/apple.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 10
   }
 ]
