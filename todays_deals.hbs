@@ -10,7 +10,7 @@
   <link rel="icon" href="img/HatLogo.png">
   <title>Deal of the Day</title>
 </head>
-<body>
+<body onload="timer()">
 {{> fakeNavBar }}
 <!--Real Nav Bar-->
 <nav class="navbar navbar-expand-lg navbar-light navbg pt-0">
@@ -136,7 +136,7 @@
           <h3>Item Name</h3>
           <p>Description</p>
           <input type="text" id="quantity">
-          <button class="btn btn-pink" type="button" onclick="theTimer()">Add to Cart</button>
+          <button class="btn btn-pink" type="button">Add to Cart</button>
         </div>
       </div>
     </div>
