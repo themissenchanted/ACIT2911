@@ -121,11 +121,9 @@ router.get('/electronics', (request, response) => {
     } else {
         response.render('electronics.hbs', {
             products: electronics_products,
-            cartLink: `<li class="nav-item dropdown" 
-id="cart"><a href="http://localhost:8080/cart" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"><img src="img/cart.png" 
-class="cart-icon">
- My 
-Cart</a><div class="dropdown-menu dropmenu cart-dropmenu">
+            cartLink: `<li class="nav-item dropdown" id="cart"><a href="http://localhost:8080/cart"
+ class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"><img src="img/cart.png" class="cart-icon">My Cart
+ </a><div class="dropdown-menu dropmenu cart-dropmenu">
                     <div class="cart-menu"><h5>Product Name</h5><p>$5.99</p>
                         <div class="row">
                             <div class="col-8">
