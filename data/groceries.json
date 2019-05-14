@@ -7,7 +7,8 @@
     "price": 2.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/groceries/butter.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 30
+    "points": 30,
+    "dealsImg": "<img src=\"img/products/groceries/butter.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "chips1",
@@ -17,7 +18,8 @@
     "price": 3.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/groceries/chips.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 40
+    "points": 40,
+    "dealsImg": "<img src=\"img/products/groceries/chips.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "coke1",
@@ -27,7 +29,8 @@
     "price": 1.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/groceries/coke.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 20
+    "points": 20,
+    "dealsImg": "<img src=\"img/products/groceries/coke.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "eggs1",
@@ -37,7 +40,8 @@
     "price": 4.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/groceries/eggs.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 50
+    "points": 50,
+    "dealsImg": "<img src=\"img/products/groceries/eggs.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "steak1",
@@ -47,6 +51,7 @@
     "price": 8.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/groceries/steak.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 90
+    "points": 90,
+    "dealsImg": "<img src=\"img/products/groceries/steak.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   }
 ]

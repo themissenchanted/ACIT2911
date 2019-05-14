@@ -77,6 +77,7 @@ function timer() {
     document.getElementById("timer").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
     if (timeLeft < 0) {
       document.getElementById("timer").innerHTML = "Deal Expired!";
+      window.location.href = '/newItem'
     };
   }, 1000);
 }
