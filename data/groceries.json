@@ -33,6 +33,17 @@
     "dealsImg": "<img src=\"img/products/groceries/coke.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
+    "id": "pepsi1",
+    "title": "Pepsi",
+    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/pepsi.png\" alt=\"Card image cap\">",
+    "description": "Better than Coke",
+    "price": 1.99,
+    "qty": 1,
+    "cartImg": "<img src=\"img/products/groceries/pepsi.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 20,
+    "dealsImg": "<img src=\"img/products/groceries/pepsi.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+  },
+  {
     "id": "eggs1",
     "title": "White Eggs",
     "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/eggs.png\" alt=\"Card image cap\">",
@@ -44,6 +55,17 @@
     "dealsImg": "<img src=\"img/products/groceries/eggs.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
+    "id": "browneggs1",
+    "title": "Brown Eggs",
+    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/browneggs.png\" alt=\"Card image cap\">",
+    "description": "Free Range, Organic, Pasteur Raised, Non-GMO, Gluten Free Brown Eggs",
+    "price": 9.99,
+    "qty": 1,
+    "cartImg": "<img src=\"img/products/groceries/browneggs.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 80,
+    "dealsImg": "<img src=\"img/products/groceries/browneggs.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+  },
+  {
     "id": "steak1",
     "title": "Steak",
     "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/steak.png\" alt=\"Card image cap\">",
@@ -51,7 +73,28 @@
     "price": 8.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/groceries/steak.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 90,
+    "points": 50
     "dealsImg": "<img src=\"img/products/groceries/steak.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+  {
+    "id": "banana1",
+    "title": "Banana",
+    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/banana.png\" alt=\"Card image cap\">",
+    "description": "Bunch o' Bananas",
+    "price": 2.99,
+    "qty": 1,
+    "cartImg": "<img src=\"img/products/groceries/banana.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 30,
+    "dealsImg": "<img src=\"img/products/groceries/banana.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+  },
+  {
+    "id": "apple1",
+    "title": "Apple",
+    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/apple.png\" alt=\"Card image cap\">",
+    "description": "An apple a day keeps the doctor away",
+    "price": 0.99,
+    "qty": 1,
+    "cartImg": "<img src=\"img/products/groceries/apple.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 10,
+    "dealsImg": "<img src=\"img/products/groceries/apple.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   }
 ]
