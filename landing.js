@@ -64,3 +64,19 @@ function openFooter() {
 function closeFooter() {
   document.getElementById("myFooter").style.width = "0%";
 }
+function timer() {
+  var today = new Date()
+  var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  var endTime = new Date(`${months[today.getMonth()]} ${today.getDate()+1}, ${today.getFullYear()} 00:00:00`).getTime();
+  var x = setInterval(function() {
+    var currentTime = new Date().getTime();
+    var timeLeft = endTime - currentTime;
+    var hours = Math.floor((timeLeft%(1000*60*60*24))/(1000*60*60));
+    var minutes = Math.floor((timeLeft%(1000*60*60))/(1000*60));
+    var seconds = Math.floor((timeLeft%(1000*60))/1000);
+    document.getElementById("timer").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+    if (timeLeft < 0) {
+      document.getElementById("timer").innerHTML = "Deal Expired!";
+    };
+  }, 1000);
+}

@@ -10,7 +10,7 @@
   <link rel="icon" href="img/HatLogo.png">
   <title>Deal of the Day</title>
 </head>
-<body>
+<body onload="timer()">
 {{> fakeNavBar }}
 <!--Real Nav Bar-->
 <nav class="navbar navbar-expand-lg navbar-light navbg pt-0">
@@ -122,19 +122,22 @@
   <h1 class="main-title mb-0 pt-5">My Shopping Cart</h1>
 </div>
 
-<div class="container">
+<div class="container mt-5">
   <div class="card">
     <div class="card-body">
       <h1 class="display-4">Deal of the Day!</h1>
       <hr class="my-4">
-      <div class="div-sidebyside">
-        <img src="img/treasure.jpg" height="200" width="200" alt="treasure">
-      </div>
-      <div class="pl-4 div-sidebyside">
-        <h3>Item Name</h3>
-        <p>Description</p>
-        <input type="text" id="quantity">
-        <button class="btn btn-pink" type="button">Add to Cart</button>
+      <div class="row justify-content-center">
+        <div class="div-sidebyside" style=": 20px;">
+          <img src="img/treasure.jpg" height="200" width="200" alt="treasure">
+        </div>
+        <div class="pl-4 desc">
+          <div id="timer"></div>
+          <h3>Item Name</h3>
+          <p>Description</p>
+          <input type="text" id="quantity">
+          <button class="btn btn-pink" type="button">Add to Cart</button>
+        </div>
       </div>
     </div>
   </div>
