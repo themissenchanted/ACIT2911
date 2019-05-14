@@ -1,5 +1,6 @@
 body {
   background-image: linear-gradient(white, #f8ceff);
+  background-repeat: no-repeat;
   font-family: 'Fira Sans', sans-serif;
 }
 
