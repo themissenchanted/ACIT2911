@@ -166,7 +166,7 @@
 {{/each}}
 <div class="container">
   <div class="row">
-    <div class="col 4 offset-1 mt-4">
+    <div class="col-4 offset-1 mt-4">
       <table class="table">
         <tr>
           <th>Sub Total:</th>
@@ -180,22 +180,24 @@
           <th>Total:</th>
           <td id="total">${{total}}</td>
         </tr>
-          <tr>
-              <th>Cost in Points:</th>
-              <td id="total_points">{{point_cost}}</td>
-          </tr>
+        <tr>
+          <th>Cost in Points:</th>
+          <td id="total_points">{{point_cost}}</td>
+        </tr>
       </table>
+    </div>
+    <div class="col-4 offset-1 align-items-center">
+      <div style="display: inline-block;">
+        <a class="btn btn-pink btn-md checkout-button" onClick="checkout_points()" href="#">Checkout With Points</a>
+      </div>
+      <div style="display: inline-block;">
+        <a class="btn btn-success btn-md checkout-button" onClick="checkout()" href="#">Checkout With Money</a>
+      </div>
     </div>
   </div>
   <div class="row">
     <div class="col-2 offset-3">
       <p id="current_points">Current Point Balance: {{currentPoints}}</p>
-    </div>
-    <div class="col-2" style="position: relative;">
-      <a class="btn btn-pink btn-md checkout-button" onClick="checkout_points()" href="#">Checkout With Points</a>
-    </div>
-    <div class="col-2" style="position: relative;">
-      <a class="btn btn-success btn-md checkout-button" onClick="checkout()" href="#">Checkout With Money</a>
     </div>
   </div>
 </div>
