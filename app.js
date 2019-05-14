@@ -121,7 +121,6 @@ router.get('/electronics', (request, response) => {
     } else {
         response.render('electronics.hbs', {
             products: electronics_products,
-            cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
         });
     }
