@@ -11,7 +11,7 @@ var chai = require('chai'), chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
 const app = require('./app.js');
-const tdd = require('./tdd.js');
+const tdd = require('./arrMethods.js');
 
 describe('GET /', function () {
     it("should return landing page", function (done) {
@@ -20,7 +20,7 @@ describe('GET /', function () {
             .end(function(err, res) {
                 expect(res).to.have.status(200);
                 done();
-            })
+            });
     });
 });
 
@@ -31,7 +31,7 @@ describe('GET /groceries', function () {
             .end(function(err, res) {
                 expect(res).to.have.status(200);
                 done();
-            })
+            });
     });
 });
 
@@ -42,7 +42,7 @@ describe('GET /electronics', function () {
             .end(function(err, res) {
                 expect(res).to.have.status(200);
                 done();
-            })
+            });
     });
 });
 
@@ -53,7 +53,7 @@ describe('GET /instruments', function () {
             .end(function(err, res) {
                 expect(res).to.have.status(200);
                 done();
-            })
+            });
     });
 });
 
@@ -99,8 +99,8 @@ describe("GET /unknownPage", function () {
             .end(function(err, res) {
                 expect(res).to.redirect;
                 done();
-            })
-    })
+            });
+    });
 });
 
 describe('GET /vcode', function () {

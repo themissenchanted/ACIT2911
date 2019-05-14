@@ -6,7 +6,9 @@
     "description": "If you have toast..... enough said",
     "price": 2.99,
     "qty": 1,
-    "cartImg": "<img src=\"img/products/groceries/butter.png\" class=\"img-fit cart-img\" alt=\"cart item image\">"
+    "cartImg": "<img src=\"img/products/groceries/butter.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 30,
+    "dealsImg": "<img src=\"img/products/groceries/butter.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "chips1",
@@ -15,7 +17,9 @@
     "description": "Crispy, Salty, and always leaves you wanting more",
     "price": 3.99,
     "qty": 1,
-    "cartImg": "<img src=\"img/products/groceries/chips.png\" class=\"img-fit cart-img\" alt=\"cart item image\">"
+    "cartImg": "<img src=\"img/products/groceries/chips.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 40,
+    "dealsImg": "<img src=\"img/products/groceries/chips.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "coke1",
@@ -24,7 +28,20 @@
     "description": "The OG of soft drinks, stock up",
     "price": 1.99,
     "qty": 1,
-    "cartImg": "<img src=\"img/products/groceries/coke.png\" class=\"img-fit cart-img\" alt=\"cart item image\">"
+    "cartImg": "<img src=\"img/products/groceries/coke.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 20,
+    "dealsImg": "<img src=\"img/products/groceries/coke.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+  },
+  {
+    "id": "pepsi1",
+    "title": "Pepsi",
+    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/pepsi.png\" alt=\"Card image cap\">",
+    "description": "Better than Coke",
+    "price": 1.99,
+    "qty": 1,
+    "cartImg": "<img src=\"img/products/groceries/pepsi.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 20,
+    "dealsImg": "<img src=\"img/products/groceries/pepsi.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "eggs1",
@@ -33,7 +50,20 @@
     "description": "Don't be mistaken, they taste just as good as brown eggs",
     "price": 4.99,
     "qty": 1,
-    "cartImg": "<img src=\"img/products/groceries/eggs.png\" class=\"img-fit cart-img\" alt=\"cart item image\">"
+    "cartImg": "<img src=\"img/products/groceries/eggs.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 50,
+    "dealsImg": "<img src=\"img/products/groceries/eggs.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+  },
+  {
+    "id": "browneggs1",
+    "title": "Brown Eggs",
+    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/browneggs.png\" alt=\"Card image cap\">",
+    "description": "Free Range, Organic, Pasteur Raised, Non-GMO, Gluten Free Brown Eggs",
+    "price": 9.99,
+    "qty": 1,
+    "cartImg": "<img src=\"img/products/groceries/browneggs.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 80,
+    "dealsImg": "<img src=\"img/products/groceries/browneggs.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "steak1",
@@ -42,6 +72,30 @@
     "description": "Its almost summer, fire up that BBQ and get cook'in with these bad boys",
     "price": 8.99,
     "qty": 1,
-    "cartImg": "<img src=\"img/products/groceries/steak.png\" class=\"img-fit cart-img\" alt=\"cart item image\">"
+    "cartImg": "<img src=\"img/products/groceries/steak.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 50,
+    "dealsImg": "<img src=\"img/products/groceries/steak.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+  },
+  {
+    "id": "banana1",
+    "title": "Banana",
+    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/banana.png\" alt=\"Card image cap\">",
+    "description": "Bunch o' Bananas",
+    "price": 2.99,
+    "qty": 1,
+    "cartImg": "<img src=\"img/products/groceries/banana.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 30,
+    "dealsImg": "<img src=\"img/products/groceries/banana.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+  },
+  {
+    "id": "apple1",
+    "title": "Apple",
+    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/apple.png\" alt=\"Card image cap\">",
+    "description": "An apple a day keeps the doctor away",
+    "price": 0.99,
+    "qty": 1,
+    "cartImg": "<img src=\"img/products/groceries/apple.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
+    "points": 10,
+    "dealsImg": "<img src=\"img/products/groceries/apple.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   }
 ]

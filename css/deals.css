@@ -5,5 +5,14 @@
     width: 50px;
 }
 .container {
-    padding-top: 12vh;
+    text-align: center;
+}
+.main-img {
+    background-image: url("../img/deal.png");
+}
+.desc {
+    text-align: left;
+}
+#timer {
+    color: red;
 }

@@ -6,7 +6,7 @@ const hbs = require('hbs');
 const cart_string = "'s Cart";
 const captchapng = require("captchapng");
 const session = require('express-session');
-const arrSum = require('./tdd');
+const arr = require('./arrMethods');
 
 var electronics_products = require('./data/electronics');
 var instruments_products = require('./data/instruments');
@@ -40,7 +40,15 @@ app.use(session({
 
 const redirectNotLoggedIn = (req, res, next) => {
     if (!req.session.username) {
-        res.redirect('/')
+        res.render("landing.hbs", {
+            loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
+            imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">',
+            modal: '<script type="text/javascript">\n' +
+                '    $(window).on(\'load\',function(){\n' +
+                '        $(\'#signup\').modal(\'show\');\n' +
+                '    });\n' +
+                '</script>'
+        });
     } else {
         next()
     }
@@ -62,8 +70,10 @@ router.get('/', (request, response) => {
 
 router.get('/cart', redirectNotLoggedIn, (request, response) => {
     var sub_total = [];
+    var sub_total_points = [];
     for (i=0; i < request.session.cart.length; i++) {
         sub_total.push(request.session.cart[i].price * request.session.cart[i].qty);
+        sub_total_points.push(request.session.cart[i].points * request.session.cart[i].qty);
     }
     if (!request.session.username) {
         response.render("cart.hbs", {
@@ -76,9 +86,11 @@ router.get('/cart', redirectNotLoggedIn, (request, response) => {
             items: request.session.cart,
             cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
-            sub_total: Math.round(arrSum.arrSum(sub_total) * 100) / 100,
-            tax: Math.round((arrSum.arrSum(sub_total) * 0.12) * 100) / 100,
-            total: Math.round((arrSum.arrSum(sub_total) * 1.12) * 100) / 100,
+            sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
+            tax: Math.round((arr.arrSum(sub_total) * 0.12) * 100) / 100,
+            total: Math.round((arr.arrSum(sub_total) * 1.12) * 100) / 100,
+            currentPoints: request.session.points,
+            point_cost: arr.arrSum(sub_total_points)
         });
     }
 });
@@ -109,7 +121,6 @@ router.get('/electronics', (request, response) => {
     } else {
         response.render('electronics.hbs', {
             products: electronics_products,
-            cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
         });
     }
@@ -131,16 +142,27 @@ router.get('/instruments', (request, response) => {
     }
 });
 
+router.get('/newItem', redirectNotLoggedIn, (request, response) => {
+    const item = [];
+    var randomItemIndex = Math.floor(Math.random() * all_items.length);
+    var randomItem = all_items[randomItemIndex];
+    item.push(randomItem);
+    request.session.deal = item;
+    response.redirect('/todays_deals');
+});
+
 router.get('/todays_deals', (request, response) => {
     if (!request.session.username) {
         response.render("todays_deals.hbs", {
             loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
-            imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
+            imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">',
+            item: request.session.deal
         });
     } else {
         response.render('todays_deals.hbs', {
             cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
+            item: request.session.deal
         });
     }
 });
@@ -175,9 +197,18 @@ router.get('/vcode',getVcodeImage);
 app.post('/login', (request, response) => {
     if (request.body.vcode != request.session.vcode) {
         response.render('landing.hbs', {
-            popup: "<script>alert('Invalid Captcha Information, try again!')</script>",
+            popup: '<script>\n' +
+                '    $(document).ready(function(){\n' +
+                '        alert(\'Invalid verification code, try again!\');\n' +
+                '    });\n' +
+                '</script>',
             loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
-            imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
+            imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">',
+            modal: '<script type="text/javascript">\n' +
+                '    $(window).on(\'load\',function(){\n' +
+                '        $(\'#login\').modal(\'show\');\n' +
+                '    });\n' +
+                '</script>'
         });
         return;
     }
@@ -189,7 +220,11 @@ app.post('/login', (request, response) => {
         }
         if (result.length === 0) {
             response.render('landing.hbs', {
-                popup: "<script>alert(\'Invalid Login Information, try again!')</script>",
+                popup: '<script>\n' +
+                    '    $(document).ready(function(){\n' +
+                    '        alert(\'Invalid login information, try again!\');\n' +
+                    '    });\n' +
+                    '</script>',
                 loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
                 imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
             });
@@ -197,22 +232,31 @@ app.post('/login', (request, response) => {
         for (i=0; i < result.length; i++) {
             if (request.body.username === result[i].username) {
                 if (request.body.password === result[i].password) {
-                    request.session.username = request.body.username;
+                    request.session.username = result[i].username;
                     request.session.cart = result[i].cart;
+                    request.session.points = result[i].points;
                     response.render('landing.hbs', {
                         cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.body.username + cart_string}</a></li>`,
                         loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
                     });
                 } else {
                     response.render('landing.hbs', {
-                        popup: "<script>alert(\'Invalid Login Information, try again!')</script>",
+                        popup: '<script>\n' +
+                            '    $(document).ready(function(){\n' +
+                            '        alert(\'Invalid login information, try again!\');\n' +
+                            '    });\n' +
+                            '</script>',
                         loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
                         imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
                     });
                 }
             } else {
                 response.render('landing.hbs', {
-                    popup: '<script>alert("Invalid Login Information, try again!")</script>',
+                    popup: '<script>\n' +
+                        '    $(document).ready(function(){\n' +
+                        '        alert(\'Invalid login information, try again!\');\n' +
+                        '    });\n' +
+                        '</script>',
                     loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
                     imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
                 });
@@ -224,20 +268,31 @@ app.post('/login', (request, response) => {
 app.post('/register', function (request, response) {
     var db = utils.getDb();
     request.body.cart = [];
+    request.body.points = 0;
     db.collection('users').find({username: `${request.body.username}`}).toArray().then(function (result) {
         if (result.length === 0) {
             db.collection('users').insertOne(request.body);
             request.session.username = request.body.username;
             request.session.cart = request.body.cart;
+            request.session.points = request.body.points;
             response.render('landing.hbs', {
                 cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
                 loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>'
             });
         } else {
             response.render('landing.hbs', {
-                popup: '<script>alert(\'Account already exists with that username, try again!\')</script>\n',
+                popup: '<script>\n' +
+                    '    $(document).ready(function(){\n' +
+                    '        alert(\'An account already exists with that username, try again!\');\n' +
+                    '    });\n' +
+                    '</script>',
                 loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
-                imgTag: '<img id="captchapng" src="/vcode" alt="Smiley Face" height="30" width="80">'
+                imgTag: '<img id="captchapng" src="/vcode" alt="Smiley Face" height="30" width="80">',
+                modal: '<script type="text/javascript">\n' +
+                    '    $(window).on(\'load\',function(){\n' +
+                    '        $(\'#signup\').modal(\'show\');\n' +
+                    '    });\n' +
+                    '</script>'
             });
         }
     });
@@ -257,7 +312,6 @@ app.get('/logout', redirectNotLoggedIn, (request, response) => {
 });
 
 app.get('/add_cart/:id', redirectNotLoggedIn, (request, response) => {
-    var cart = request.session.cart;
     for (i=0; i < all_items.length; i++) {
         if (request.params.id === all_items[i].id) {
             try {
@@ -265,11 +319,11 @@ app.get('/add_cart/:id', redirectNotLoggedIn, (request, response) => {
                     request.session.cart[i].qty += 1;
                     break;
                 } else {
-                    cart.push(all_items[i]);
+                    request.session.cart.push(all_items[i]);
                     break;
                 }
             } catch (e) {
-                cart.push(all_items[i]);
+                request.session.cart.push(all_items[i]);
                 break;
             }
         }
@@ -288,9 +342,14 @@ app.post('/update_cart', redirectNotLoggedIn, (request, response) => {
     var item = keys[1];
     for (i=0; i < request.session.cart.length; i++) {
         if (request.session.cart[i].id === item) {
-            request.session.cart[i].qty = request.body.qty;
+            if (request.body.qty == 0) {
+                delete request.session.cart[i];
+            } else {
+                request.session.cart[i].qty = request.body.qty;
+            }
         }
     }
+    request.session.cart = arr.arrayRemove(request.session.cart, null);
     var db = utils.getDb();
     var myquery = { username: `${request.session.username}` };
     var newvalues = { $set: { cart: request.session.cart} };
@@ -301,14 +360,117 @@ app.post('/update_cart', redirectNotLoggedIn, (request, response) => {
 });
 
 app.get('/checkout', redirectNotLoggedIn, (request, response) => {
+    var sub_total = [];
+    var sub_total_points = [];
+    for (i=0; i < request.session.cart.length; i++) {
+        sub_total.push(request.session.cart[i].price * request.session.cart[i].qty);
+        sub_total_points.push(request.session.cart[i].points * request.session.cart[i].qty);
+    }
+    var point_cost = 0;
+    for (i=0; i < request.session.cart.length; i++) {
+        point_cost += (request.session.cart[i].points * request.session.cart[i].qty)
+    }
+    if (request.session.cart.length === 0) {
+        response.render('cart.hbs', {
+            items: request.session.cart,
+            cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
+            loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
+            sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
+            tax: Math.round((arr.arrSum(sub_total) * 0.12) * 100) / 100,
+            total: Math.round((arr.arrSum(sub_total) * 1.12) * 100) / 100,
+            currentPoints: request.session.points,
+            point_cost: arr.arrSum(sub_total_points),
+            script: '<script>\n' +
+                '    $(document).ready(function(){\n' +
+                '        alert(\'You need to add something to your cart first silly!\');\n' +
+                '    });\n' +
+                '</script>'
+        });
+    }
+    for (i=0; i < request.session.cart.length; i++) {
+        request.session.points += (Math.round((request.session.cart[i].price * request.session.cart[i].qty) / 4));
+    }
     request.session.cart = [];
     var db = utils.getDb();
     var myquery = { username: `${request.session.username}` };
-    var newvalues = { $set: { cart: request.session.cart} };
+    var newvalues = { $set: { cart: request.session.cart, points: Math.round(request.session.points)} };
     db.collection("users").updateOne(myquery, newvalues, function(err, res) {
         if (err) throw err;
     });
-    response.redirect('/');
+    response.render('landing.hbs', {
+        cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
+        loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
+        orderPlaced: '<script>\n' +
+            '    $(document).ready(function(){\n' +
+            '        alert(\'Your order has been placed, thank you!\');\n' +
+            '    });\n' +
+            '</script>'
+    });
+});
+
+app.get('/checkout_points', redirectNotLoggedIn, (request, response) => {
+    var sub_total = [];
+    var sub_total_points = [];
+    for (i=0; i < request.session.cart.length; i++) {
+        sub_total.push(request.session.cart[i].price * request.session.cart[i].qty);
+        sub_total_points.push(request.session.cart[i].points * request.session.cart[i].qty);
+    }
+    var point_cost = 0;
+    for (i=0; i < request.session.cart.length; i++) {
+        point_cost += (request.session.cart[i].points * request.session.cart[i].qty)
+    }
+    if (request.session.cart.length === 0) {
+        response.render('cart.hbs', {
+            items: request.session.cart,
+            cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
+            loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
+            sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
+            tax: Math.round((arr.arrSum(sub_total) * 0.12) * 100) / 100,
+            total: Math.round((arr.arrSum(sub_total) * 1.12) * 100) / 100,
+            currentPoints: request.session.points,
+            point_cost: arr.arrSum(sub_total_points),
+            script: '<script>\n' +
+                '    $(document).ready(function(){\n' +
+                '        alert(\'You need to add something to your cart first silly!\');\n' +
+                '    });\n' +
+                '</script>'
+        });
+    }
+    if (request.session.points < point_cost) {
+        response.render('cart.hbs', {
+            items: request.session.cart,
+            cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
+            loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
+            sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
+            tax: Math.round((arr.arrSum(sub_total) * 0.12) * 100) / 100,
+            total: Math.round((arr.arrSum(sub_total) * 1.12) * 100) / 100,
+            currentPoints: request.session.points,
+            point_cost: arr.arrSum(sub_total_points),
+            script: '<script>\n' +
+                '    $(document).ready(function(){\n' +
+                '        alert(\'You do not have enough points to make this purchase yet, try earning some more!\');\n' +
+                '    });\n' +
+                '</script>'
+        });
+    } else {
+        request.session.points -= point_cost;
+        request.session.cart = [];
+        var db = utils.getDb();
+        var myquery = { username: `${request.session.username}` };
+        var newvalues = { $set: { cart: request.session.cart, points: request.session.points} };
+        db.collection("users").updateOne(myquery, newvalues, function(err, res) {
+            if (err) throw err;
+        });
+        response.render('landing.hbs', {
+            cartLink: `<li class="nav-item" id="cart"><a href="http://localhost:8080/cart" class="nav-link">${request.session.username + cart_string}</a></li>`,
+            loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
+            orderPlaced: '<script>\n' +
+                '    $(document).ready(function(){\n' +
+                '        alert(\'Your order has been placed, thank you!\');\n' +
+                '    });\n' +
+                '</script>'
+        });
+    }
 });
 
 app.use(function(req, res) {

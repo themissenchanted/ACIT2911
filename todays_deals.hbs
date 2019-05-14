@@ -10,7 +10,7 @@
   <link rel="icon" href="img/HatLogo.png">
   <title>Deal of the Day</title>
 </head>
-<body>
+<body onload="timer()">
 {{> fakeNavBar }}
 <!--Real Nav Bar-->
 <nav class="navbar navbar-expand-lg navbar-light navbg pt-0">
@@ -35,7 +35,23 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            {{{ cartLink }}}
+          <li class="nav-item dropdown" id="cart"><a href="http://localhost:8080/cart" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"><img
+              src="img/cart.png" class="cart-icon"> My Cart
+          </a><div class="dropdown-menu dropmenu cart-dropmenu">
+            <div class="cart-menu"><h5>Product Name</h5><p class="mb-0">$5.99</p>
+              <div class="row">
+                <div class="col-7">
+                  <p class="mb-0">quantity:</p>
+                </div>
+                <div class="col-5">
+                  <span><a><img src="img/minus.png" class="cart-button"></a> 1 <a><img src="img/plus.png"
+                                                                                       class="cart-button"></a></span>
+                </div>
+              </div>
+            </div>
+            <div class="cart-total">Total: $999.99</div>
+            <button class="btn btn-pink">Checkout</button>
+          </div></li>
             {{{ loginlogoutButton }}}
             <li class="nav-item" id="registerbutton">
                 <a href="#" class="nav-link" data-toggle="modal" data-target="#signup">Sign Up</a>
@@ -118,23 +134,32 @@
     </div>
 </div>
 
-<div class="container">
+<div class="main-img">
+  <h1 class="main-title mb-0 pt-5">Todays Deals</h1>
+</div>
+
+{{# each item}}
+<div class="container mt-5">
   <div class="card">
     <div class="card-body">
       <h1 class="display-4">Deal of the Day!</h1>
       <hr class="my-4">
-      <div class="div-sidebyside">
-        <img src="img/treasure.jpg" height="200" width="200" alt="treasure">
-      </div>
-      <div class="pl-4 div-sidebyside">
-        <h3>Item Name</h3>
-        <p>Description</p>
-        <input type="text" id="quantity">
-        <button class="btn btn-pink" type="button">Add to Cart</button>
+      <div class="row justify-content-center">
+        <div class="div-sidebyside" style=": 20px;">
+            {{{this.dealsImg}}}
+        </div>
+        <div class="pl-4 desc">
+          <div id="timer"></div>
+          <h3>{{this.title}}</h3>
+          <p>{{this.description}}</p>
+            <h3>${{this.price}}</h3>
+          <a class="btn btn-pink" href="/add_cart/{{this.id}}">Add to Cart</a>
+        </div>
       </div>
     </div>
   </div>
 </div>
+{{/each}}
 
 <footer class="mt-5 footer">
   <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
