@@ -7,7 +7,8 @@
     "price": 2.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/groceries/butter.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 30
+    "points": 30,
+    "dealsImg": "<img src=\"img/products/groceries/butter.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "chips1",
@@ -17,7 +18,8 @@
     "price": 3.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/groceries/chips.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 40
+    "points": 40,
+    "dealsImg": "<img src=\"img/products/groceries/chips.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "coke1",
@@ -27,7 +29,8 @@
     "price": 1.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/groceries/coke.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 20
+    "points": 20,
+    "dealsImg": "<img src=\"img/products/groceries/coke.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "pepsi1",
@@ -47,7 +50,8 @@
     "price": 4.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/groceries/eggs.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 50
+    "points": 50,
+    "dealsImg": "<img src=\"img/products/groceries/eggs.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "browneggs1",
@@ -67,26 +71,5 @@
     "price": 8.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/groceries/steak.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 90
-  },
-  {
-    "id": "banana1",
-    "title": "Banana",
-    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/banana.png\" alt=\"Card image cap\">",
-    "description": "Bunch o' Bananas",
-    "price": 2.99,
-    "qty": 1,
-    "cartImg": "<img src=\"img/products/groceries/banana.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 30
-  },
-  {
-    "id": "apple1",
-    "title": "Apple",
-    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/groceries/apple.png\" alt=\"Card image cap\">",
-    "description": "An apple a day keeps the doctor away",
-    "price": 0.99,
-    "qty": 1,
-    "cartImg": "<img src=\"img/products/groceries/apple.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 10
   }
 ]

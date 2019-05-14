@@ -7,7 +7,8 @@
     "price": 419.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/banjo.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 4200
+    "points": 4200,
+    "dealsImg": "<img src=\"img/products/instruments/banjo.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "clarinet1",
@@ -17,7 +18,8 @@
     "price": 399.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/clarinet.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 4000
+    "points": 4000,
+    "dealsImg": "<img src=\"img/products/instruments/clarinet.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "guitar1",
@@ -27,7 +29,8 @@
     "price": 499.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/guitar.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 5000
+    "points": 5000,
+    "dealsImg": "<img src=\"img/products/instruments/guitar.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "piano1",
@@ -37,7 +40,8 @@
     "price": 1999.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/piano.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 20000
+    "points": 20000,
+    "dealsImg": "<img src=\"img/products/instruments/piano.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "saxophone1",
@@ -47,7 +51,8 @@
     "price": 399.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/saxophone.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 4000
+    "points": 4000,
+    "dealsImg": "<img src=\"img/products/instruments/saxophone.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "triangle1",
@@ -57,56 +62,5 @@
     "price": 19.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/triangle.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 200
-  },
-  {
-    "id": "flute1",
-    "title": "Flute",
-    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/instruments/flute.png\" alt=\"Card image cap\">",
-    "description": "Channel your inner snake charmer",
-    "price": 59.99,
-    "qty": 1,
-    "cartImg": "<img src=\"img/products/instruments/flute.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 500
-  },
-  {
-    "id": "otamatone1",
-    "title": "Otamatone",
-    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/instruments/otamatone.png\" alt=\"Card image cap\">",
-    "description": "The only instrument you'll ever need",
-    "price": 49.99,
-    "qty": 1,
-    "cartImg": "<img src=\"img/products/instruments/otamatone.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 400
-  },
-  {
-    "id": "melodica1",
-    "title": "Melodica",
-    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/instruments/melodica.png\" alt=\"Card image cap\">",
-    "description": "When you don't know if you want a harmonica or a piano. Also would be perfect to play in April",
-    "price": 29.99,
-    "qty": 1,
-    "cartImg": "<img src=\"img/products/instruments/melodica.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 300
-  },
-  {
-    "id": "didgeridoo1",
-    "title": "Didgeridoo",
-    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/instruments/didgeridoo.png\" alt=\"Card image cap\">",
-    "description": "This one's going to require practice.",
-    "price": 299.99,
-    "qty": 1,
-    "cartImg": "<img src=\"img/products/instruments/didgeridoo.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 2500
-  },
-  {
-    "id": "mayo1",
-    "title": "Mayonnaise",
-    "img": "<img class=\"card-img-top img-fit\" src=\"img/products/instruments/mayo.png\" alt=\"Card image cap\">",
-    "description": "<a href=\"https://www.youtube.com/watch?v=A5jnftBQw2U\" style=\"color: black;\">Yes, mayonnaise is an instrument.</a>",
-    "price": 3.99,
-    "qty": 1,
-    "cartImg": "<img src=\"img/products/instruments/mayo.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 20
   }
 ]

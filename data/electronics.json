@@ -7,7 +7,8 @@
     "price": 89.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/electronics/headphones.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 900
+    "points": 900,
+    "dealsImg": "<img src=\"img/products/electronics/headphones.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "ipod1",
@@ -17,7 +18,8 @@
     "price": 79.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/electronics/ipod.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 800
+    "points": 800,
+    "dealsImg": "<img src=\"img/products/electronics/ipod.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "laptop1",
@@ -27,7 +29,8 @@
     "price": 1899.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/electronics/laptop.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 19000
+    "points": 19000,
+    "dealsImg": "<img src=\"img/products/electronics/laptop.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "mouse1",
@@ -37,7 +40,8 @@
     "price": 149.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/electronics/mouse.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 1500
+    "points": 1500,
+    "dealsImg": "<img src=\"img/products/electronics/mouse.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "tv1",
@@ -47,6 +51,7 @@
     "price": 499.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/electronics/tv.webp\" class=\"img-fit cart-img\" alt=\"cart item image\">",
-    "points": 5000
+    "points": 5000,
+    "dealsImg": "<img src=\"img/products/electronics/tv.webp\" height=\"200\" width=\"200\" alt=\"treasure\">"
   }
 ]
