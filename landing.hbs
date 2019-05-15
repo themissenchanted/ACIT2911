@@ -40,23 +40,7 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown" id="cart"><a href="http://localhost:8080/cart" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"><img
-              src="img/cart.png" class="cart-icon"> My Cart
-          </a><div class="dropdown-menu dropmenu cart-dropmenu">
-            <div class="cart-menu"><h5>Product Name</h5><p class="mb-0">$5.99</p>
-              <div class="row">
-                <div class="col-7">
-                  <p class="mb-0">quantity:</p>
-                </div>
-                <div class="col-5">
-                  <span><a><img src="img/minus.png" class="cart-button"></a> 1 <a><img src="img/plus.png"
-                                                                                       class="cart-button"></a></span>
-                </div>
-              </div>
-            </div>
-            <div class="cart-total">Total: $999.99</div>
-            <button class="btn btn-pink">Checkout</button>
-          </div></li>
+            {{> cartIcon}}
             {{{ loginlogoutButton }}}
             <li class="nav-item" id="registerbutton">
                 <a href="#" class="nav-link" data-toggle="modal" data-target="#signup">Sign Up</a>
