@@ -1,3 +1,5 @@
+const arr = require('./arrMethods.js');
+
 $('.center').slick({
   centerMode: true,
   centerPadding: '60px',
@@ -23,6 +25,7 @@ $('.center').slick({
     }
   ]
 });
+
 function reveal() {
   var field = document.getElementById("registerpassword")
   var eye = document.getElementById("eye")
@@ -64,8 +67,9 @@ function openFooter() {
 function closeFooter() {
   document.getElementById("myFooter").style.width = "0%";
 }
+
 function timer() {
-  var today = new Date()
+  var today = new Date();
   var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
   var endTime = new Date(`${months[today.getMonth()]} ${today.getDate()+1}, ${today.getFullYear()} 00:00:00`).getTime();
   var x = setInterval(function() {
@@ -77,7 +81,7 @@ function timer() {
     document.getElementById("timer").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
     if (timeLeft < 0) {
       document.getElementById("timer").innerHTML = "Deal Expired!";
-      window.location.href = '/newItem'
-    };
+      window.location.href = '/todaysDeals'
+    }
   }, 1000);
 }

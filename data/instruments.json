@@ -113,7 +113,7 @@
     "id": "mayo1",
     "title": "Mayonnaise",
     "img": "<img class=\"card-img-top img-fit\" src=\"img/products/instruments/mayo.png\" alt=\"Card image cap\">",
-    "description": "<a href=\"https://www.youtube.com/watch?v=A5jnftBQw2U\" style=\"color: black;\">Yes, mayonnaise is an instrument.</a>",
+    "description": "Yes, mayonnaise is an instrument.",
     "price": 3.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/mayo.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",

@@ -7,6 +7,7 @@ const cart_string = "'s Cart";
 const captchapng = require("captchapng");
 const session = require('express-session');
 const arr = require('./arrMethods');
+const sched = require('node-schedule');
 
 var electronics_products = require('./data/electronics');
 var instruments_products = require('./data/instruments');
@@ -37,6 +38,28 @@ app.use(session({
         sameSite: true,
     }
 }));
+
+const getLocalDeal = () => {
+    var db = utils.getDb();
+    const item = [];
+    var randomItemIndex = Math.floor(Math.random() * all_items.length);
+    var randomItem = all_items[randomItemIndex];
+    var discount = +(Math.round((randomItem.price * 0.25) + "e+2")  + "e-2");
+    randomItem.price -= +(Math.round((discount) + "e+2")  + "e-2");
+    item.push(randomItem);
+    var myobj = { deal: item };
+    db.collection('deal').drop().then(function () {
+        db.collection("deal").insertOne(myobj, function(err, res) {
+            if (err) throw err;
+            console.log(res)
+        });
+    }).catch(function () {
+        db.collection("deal").insertOne(myobj, function(err, res) {
+            if (err) throw err;
+            console.log(res)
+        });
+    });
+};
 
 const redirectNotLoggedIn = (req, res, next) => {
     var cart = [{
@@ -233,21 +256,11 @@ router.get('/instruments', (request, response) => {
     }
 });
 
-router.get('/newItem', redirectNotLoggedIn, (request, response) => {
-    const item = [];
-    var randomItemIndex = Math.floor(Math.random() * all_items.length);
-    var randomItem = all_items[randomItemIndex];
-    item.push(randomItem);
-    request.session.deal = item;
-    response.redirect('/todays_deals');
-});
-
-router.get('/todays_deals', (request, response) => {
+router.get('/aboutus', (request, response) => {
     var cart = [{
         title: "No Items",
         price: 0,
         qty: 0,
-
     }];
     var sub_total = [];
     if (request.session.username) {
@@ -259,21 +272,56 @@ router.get('/todays_deals', (request, response) => {
         }
     }
     if (!request.session.username) {
-        response.render("todays_deals.hbs", {
+        response.render("aboutus.hbs", {
             cart: cart,
             sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
             loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
-            imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">',
-            item: request.session.deal
+            imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
         });
     } else {
-        response.render('todays_deals.hbs', {
+        response.render('about.hbs', {
             cart: cart,
             sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
-            item: request.session.deal
         });
     }
+});
+
+router.get('/todays_deals', (request, response) => {
+        var cart = [{
+        title: "No Items",
+        price: 0,
+        qty: 0,
+    }];
+    var sub_total = [];
+    if (request.session.username) {
+        if (request.session.cart.length > 0) {
+            cart = request.session.cart;
+            for (i=0; i < request.session.cart.length; i++) {
+                sub_total.push(request.session.cart[i].price * request.session.cart[i].qty);
+            }
+        }
+    }
+    var db = utils.getDb();
+    db.collection("deal").findOne({}, function(err, result) {
+        if (err) throw err;
+        if (!request.session.username) {
+            response.render("todays_deals.hbs", {
+                cart: cart,
+                sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
+                loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
+                imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">',
+                item: result.deal
+            });
+        } else {
+            response.render('todays_deals.hbs', {
+                cart: cart,
+                sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
+                loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
+                item: result.deal
+            });
+        }
+    });
 });
 
 app.use('/', router);
@@ -281,6 +329,7 @@ app.use('/', router);
 var server = app.listen(8080, () => {
     console.log('Server is up and running');
     utils.init();
+    setTimeout(function(){ getLocalDeal() }, 3000);
 });
 
 const getVcodeImage = (req, res) => {
@@ -534,6 +583,30 @@ app.get('/add_cart/:id', redirectNotLoggedIn, (request, response) => {
     response.redirect('back')
 });
 
+app.get('/add_deal/:id', redirectNotLoggedIn, (request, response) => {
+    var db = utils.getDb();
+    var check = false;
+    db.collection('deal').find({}).toArray((err, result) => {
+        if (result.length === 1) {
+            for (i=0; i < request.session.cart.length; i++) {
+                if (request.params.id == request.session.cart[i].id) {
+                    request.session.cart[i].qty += 1;
+                    check = true;
+                }
+            }
+            if (!check) {
+                request.session.cart.push(result[0].deal[0]);
+            }
+            var myquery = { username: `${request.session.username}` };
+            var newvalues = { $set: { cart: request.session.cart} };
+            db.collection("users").updateOne(myquery, newvalues, function(err, res) {
+                if (err) throw err;
+                response.redirect('back');
+            });
+        }
+    });
+});
+
 app.post('/update_cart', redirectNotLoggedIn, (request, response) => {
     const keys = Object.keys(request.body);
     var item = keys[1];
@@ -630,7 +703,7 @@ app.get('/checkout', redirectNotLoggedIn, (request, response) => {
         });
     }
     for (i=0; i < request.session.cart.length; i++) {
-        request.session.points += (Math.round((request.session.cart[i].price * request.session.cart[i].qty) * 0.1));
+        request.session.points += (Math.round((request.session.cart[i].price * request.session.cart[i].qty) * 1.1));
     }
     request.session.cart = [];
     var db = utils.getDb();
@@ -720,6 +793,28 @@ app.get('/checkout_points', redirectNotLoggedIn, (request, response) => {
                 '</script>'
         });
     }
+});
+
+var j = sched.scheduleJob('0 0 * * *', function(){
+    var db = utils.getDb();
+    const item = [];
+    var randomItemIndex = Math.floor(Math.random() * all_items.length);
+    var randomItem = all_items[randomItemIndex];
+    var discount = +(Math.round((randomItem.price * 0.25) + "e+2")  + "e-2");
+    randomItem.price -= +(Math.round((discount) + "e+2")  + "e-2");
+    item.push(randomItem);
+    var myobj = { deal: item };
+    db.collection('deal').drop().then(function () {
+        db.collection("deal").insertOne(myobj, function(err, res) {
+            if (err) throw err;
+            console.log(res)
+        });
+    }).catch(function () {
+        db.collection("deal").insertOne(myobj, function(err, res) {
+            if (err) throw err;
+            console.log(res)
+        });
+    });
 });
 
 app.use(function(req, res) {
