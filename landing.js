@@ -1,5 +1,3 @@
-const arr = require('./arrMethods.js');
-
 $('.center').slick({
   centerMode: true,
   centerPadding: '60px',
