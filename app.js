@@ -417,6 +417,7 @@ app.post('/login', (request, response) => {
                 if (request.body.password === result[i].password) {
                     request.session.username = result[i].username;
                     request.session.cart = result[i].cart;
+                    console.log(request.session.cart);
                     if (request.session.cart.length == 0) {
                         var cart = [{
                             title: "No Items",
@@ -674,7 +675,6 @@ app.get('/checkout', redirectNotLoggedIn, (request, response) => {
         title: "No Items",
         price: 0,
         qty: 0,
-
     }];
     var sub_total = [];
     var sub_total_points = [];
@@ -715,7 +715,7 @@ app.get('/checkout', redirectNotLoggedIn, (request, response) => {
     });
     response.render('landing.hbs', {
         cart: cart,
-        sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
+        sub_total: 0,
         loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
         orderPlaced: '<script>\n' +
             '    $(document).ready(function(){\n' +
