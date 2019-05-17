@@ -82,3 +82,10 @@ function timer() {
     }
   }, 1000);
 }
+
+/* Opens Confirmation Modal Upon Checkout */
+function confirmPurchase() {
+  var mymodal = document.querySelector('.popup1');
+  mymodal.style.visibility = 'visible';
+  mymodal.style.opacity = '1';
+}

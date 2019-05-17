@@ -8,7 +8,7 @@
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/banjo.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
     "points": 4200,
-    "dealsImg": "<img src=\"img/products/instruments/banjo.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+    "dealsImg": "<img src=\"img/products/instruments/banjo.png\" class=\"img-fit\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "clarinet1",
@@ -19,7 +19,7 @@
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/clarinet.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
     "points": 4000,
-    "dealsImg": "<img src=\"img/products/instruments/clarinet.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+    "dealsImg": "<img src=\"img/products/instruments/clarinet.png\" class=\"img-fit\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "guitar1",
@@ -30,7 +30,7 @@
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/guitar.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
     "points": 5000,
-    "dealsImg": "<img src=\"img/products/instruments/guitar.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+    "dealsImg": "<img src=\"img/products/instruments/guitar.png\" class=\"img-fit\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "piano1",
@@ -41,7 +41,7 @@
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/piano.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
     "points": 20000,
-    "dealsImg": "<img src=\"img/products/instruments/piano.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+    "dealsImg": "<img src=\"img/products/instruments/piano.png\" class=\"img-fit\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "saxophone1",
@@ -52,7 +52,7 @@
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/saxophone.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
     "points": 4000,
-    "dealsImg": "<img src=\"img/products/instruments/saxophone.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+    "dealsImg": "<img src=\"img/products/instruments/saxophone.png\" class=\"img-fit\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "triangle1",
@@ -63,7 +63,7 @@
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/triangle.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
     "points": 100,
-    "dealsImg": "<img src=\"img/products/instruments/triangle.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+    "dealsImg": "<img src=\"img/products/instruments/triangle.png\" class=\"img-fit\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "flute1",
@@ -74,7 +74,7 @@
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/flute.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
     "points": 500,
-    "dealsImg": "<img src=\"img/products/instruments/flute.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+    "dealsImg": "<img src=\"img/products/instruments/flute.png\" class=\"img-fit\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "otamatone1",
@@ -85,7 +85,7 @@
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/otamatone.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
     "points": 400,
-    "dealsImg": "<img src=\"img/products/instruments/otamatone.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+    "dealsImg": "<img src=\"img/products/instruments/otamatone.png\" class=\"img-fit\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "melodica1",
@@ -96,7 +96,7 @@
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/melodica.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
     "points": 300,
-    "dealsImg": "<img src=\"img/products/instruments/melodica.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+    "dealsImg": "<img src=\"img/products/instruments/melodica.png\" class=\"img-fit\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "didgeridoo1",
@@ -107,7 +107,7 @@
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/didgeridoo.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
     "points": 2500,
-    "dealsImg": "<img src=\"img/products/instruments/didgeridoo.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+    "dealsImg": "<img src=\"img/products/instruments/didgeridoo.png\" class=\"img-fit\" height=\"200\" width=\"200\" alt=\"treasure\">"
   },
   {
     "id": "mayo1",
@@ -118,6 +118,6 @@
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/mayo.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
     "points": 20,
-    "dealsImg": "<img src=\"img/products/instruments/mayo.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
+    "dealsImg": "<img src=\"img/products/instruments/mayo.png\" class=\"img-fit\" height=\"200\" width=\"200\" alt=\"treasure\">"
   }
 ]
