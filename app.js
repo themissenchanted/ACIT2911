@@ -7,9 +7,9 @@ const session = require('express-session');
 const arr = require('./arrMethods');
 const sched = require('node-schedule');
 
-var electronics_products = Array.from(require('./data/electronics'));
-var instruments_products = Array.from(require('./data/instruments'));
-var groceries_products = Array.from(require('./data/groceries'));
+var electronics_products = require('./data/electronics');
+var instruments_products = require('./data/instruments');
+var groceries_products = require('./data/groceries');
 var all_items = electronics_products.concat(instruments_products, groceries_products);
 
 var app = express();
@@ -554,10 +554,8 @@ app.get('/logout', redirectNotLoggedIn, (request, response) => {
 });
 
 app.get('/add_cart/:id', redirectNotLoggedIn, (request, response) => {
-    for (i=0; i <request.session.cart.length; i++) {
-        console.log(request.session.cart[i].id);
-    }
     var check = true;
+    var check2 = true;
     for (i=0; i < all_items.length; i++) {
         if (request.params.id === all_items[i].id) {
             if (request.session.cart.length === 0) {
@@ -570,13 +568,19 @@ app.get('/add_cart/:id', redirectNotLoggedIn, (request, response) => {
         }
     }
     if (!check) {
-        for (i=0; i < request.session.cart.length; i++) {
-            if (request.params.id === request.session.cart[i].id) {
-                request.session.cart[i].qty += 1;
+        for (a=0; a < request.session.cart.length; a++) {
+            if (request.session.cart[a].id === request.params.id) {
+                check2 = false;
+                request.session.cart[a].qty += 1;
                 break;
-            } else {
-                request.session.cart.push(all_items[i]);
-                break
+            }
+        }
+        if (check2) {
+            for (g=0; g < all_items.length; g++) {
+                if (request.params.id === all_items[g].id) {
+                    request.session.cart.push(all_items[g]);
+                    break;
+                }
             }
         }
     }
