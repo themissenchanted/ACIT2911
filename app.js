@@ -91,8 +91,12 @@ const redirectNotLoggedIn = (req, res, next) => {
 };
 
 router.get('/newItem', (request, response) => {
-    getLocalDeal();
-    response.redirect('/todays_deals');
+    if (request.session.username != 'addmin') {
+        response.redirect('/todays_deals');
+    } else {
+        getLocalDeal();
+        response.redirect('/todays_deals');
+    }
 });
 
 router.get('/', (request, response) => {
@@ -705,9 +709,11 @@ app.get('/checkout', redirectNotLoggedIn, (request, response) => {
             currentPoints: request.session.points,
             point_cost: arr.arrSum(sub_total_points),
             script: '<script>\n' +
-                '    $(document).ready(function(){\n' +
-                '        alert(\'You need to add something to your cart first silly!\');\n' +
-                '    });\n' +
+                '    $(document).ready(function (){\n' +
+                '        var mymodal = document.querySelector(\'.popup3\');\n' +
+                '        mymodal.style.visibility = \'visible\';\n' +
+                '        mymodal.style.opacity = \'1\';\n' +
+                '    })\n' +
                 '</script>'
         });
     }
@@ -726,9 +732,13 @@ app.get('/checkout', redirectNotLoggedIn, (request, response) => {
         sub_total: 0,
         loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
         orderPlaced: '<script>\n' +
-            '    $(document).ready(function(){\n' +
-            '        alert(\'Your order has been placed, thank you!\');\n' +
-            '    });\n' +
+            '    var mymodal = document.querySelector(\'.popup5\');\n' +
+            '    mymodal.style.visibility = \'visible\';\n' +
+            '    mymodal.style.opacity = \'1\';\n' +
+            '    setTimeout(function(){\n' +
+            '        var mymodal = document.querySelector(\'.popup5\');\n' +
+            '        mymodal.style.visibility = \'hidden\';\n' +
+            '        mymodal.style.opacity = \'0\'; }, 3000)\n' +
             '</script>'
     });
 });
@@ -761,9 +771,11 @@ app.get('/checkout_points', redirectNotLoggedIn, (request, response) => {
             currentPoints: request.session.points,
             point_cost: arr.arrSum(sub_total_points),
             script: '<script>\n' +
-                '    $(document).ready(function(){\n' +
-                '        alert(\'You need to add something to your cart first silly!\');\n' +
-                '    });\n' +
+                '    $(document).ready(function (){\n' +
+                '        var mymodal = document.querySelector(\'.popup3\');\n' +
+                '        mymodal.style.visibility = \'visible\';\n' +
+                '        mymodal.style.opacity = \'1\';\n' +
+                '    })\n' +
                 '</script>'
         });
     }
@@ -778,9 +790,11 @@ app.get('/checkout_points', redirectNotLoggedIn, (request, response) => {
             currentPoints: request.session.points,
             point_cost: arr.arrSum(sub_total_points),
             script: '<script>\n' +
-                '    $(document).ready(function(){\n' +
-                '        alert(\'You do not have enough points to make this purchase yet, try earning some more!\');\n' +
-                '    });\n' +
+                '    $(document).ready(function (){\n' +
+                '        var mymodal = document.querySelector(\'.popup4\');\n' +
+                '        mymodal.style.visibility = \'visible\';\n' +
+                '        mymodal.style.opacity = \'1\';\n' +
+                '    })\n' +
                 '</script>'
         });
     } else {
@@ -796,9 +810,13 @@ app.get('/checkout_points', redirectNotLoggedIn, (request, response) => {
             cart: cart,
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
             orderPlaced: '<script>\n' +
-                '    $(document).ready(function(){\n' +
-                '        alert(\'Your order has been placed, thank you!\');\n' +
-                '    });\n' +
+                '    var mymodal = document.querySelector(\'.popup5\');\n' +
+                '    mymodal.style.visibility = \'visible\';\n' +
+                '    mymodal.style.opacity = \'1\';\n' +
+                '    setTimeout(function(){\n' +
+                '        var mymodal = document.querySelector(\'.popup5\');\n' +
+                '        mymodal.style.visibility = \'hidden\';\n' +
+                '        mymodal.style.opacity = \'0\'; }, 3000)\n' +
                 '</script>'
         });
     }

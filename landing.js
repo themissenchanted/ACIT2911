@@ -89,10 +89,11 @@ function confirmPurchase() {
   mymodal.style.visibility = 'visible';
   mymodal.style.opacity = '1';
 }
+
 $("#cart").on("click",function(event){
   if($(event.target).closest(".dropdown").length){
-    // $('li.nav-item.dropdown').toggleClass('show');
-    $('.dropdown-toggle').dropdown()
+    $('li.nav-item.dropdown').toggleClass('show');
+    // $('.dropdown-toggle').dropdown()
   }
 });
 // $('li.nav-item.dropdown a').on('click', function (event) {
