@@ -13,6 +13,10 @@ chai.use(chaiHttp);
 const app = require('./app.js');
 const tdd = require('./arrMethods.js');
 
+const list = [{item: "item1", price: 100}];
+let item = tdd.arrRandom(list);
+console.log(item);
+
 describe('GET /', function () {
     it("should return landing page", function (done) {
         chai.request(app)
@@ -145,7 +149,18 @@ describe('POST /add_cart/:id', function () {
 describe('GET /checkout', function () {
     it("should run the checkout functions", function (done) {
         chai.request(app)
-            .get('/cart')
+            .get('/checkout')
+            .end(function(err, res) {
+                expect(res).to.have.status(200);
+                done();
+            })
+    });
+});
+
+describe('GET /checkout_points', function () {
+    it("should run the checkout functions", function (done) {
+        chai.request(app)
+            .get('/checkout_points')
             .end(function(err, res) {
                 expect(res).to.have.status(200);
                 done();
@@ -154,7 +169,7 @@ describe('GET /checkout', function () {
 });
 
 describe("POSTS /update_cart", function () {
-    it('should login as mocha@gmail.com ', (done) => {
+    it('should update the item from quantity 1 to 2 ', (done) => {
         chai.request.agent(app)
             .post('/update_cart')
             .send({
@@ -165,10 +180,35 @@ describe("POSTS /update_cart", function () {
     });
 });
 
+describe("GET /plusOne", function () {
+    it('should increase the quantity of the function by 1 ', (done) => {
+        chai.request.agent(app)
+            .get('/plusOne');
+        done();
+    });
+});
+
+describe("GET /minusOne", function () {
+    it('should decrease the quantity of the function by 1 ', (done) => {
+        chai.request.agent(app)
+            .get('/minusOne');
+        done();
+    });
+});
+
 describe("Summing Arrays", function () {
     it("should sum all the values inside an array", function (done) {
         let sum = tdd.arrSum([1, 2, 3]);
         assert.equal(sum, 6);
         done();
     })
+});
+
+describe("Finding Daily Deal", function () {
+    it('should find an item from an array and return it in a list', function (done) {
+        const list = [{item: "item1", price: 100}];
+        let item = tdd.arrRandom(list);
+        assert.equal(JSON.stringify(item), JSON.stringify([{item: "item1", price: 75}]));
+        done();
+    });
 });
