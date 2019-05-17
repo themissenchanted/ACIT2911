@@ -55,8 +55,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  visibility: hidden;
-  opacity: 0;
+  visibility: visible;
+  opacity: 1;
   transition: visibility 0s, opacity 0.5s;
 }
 
@@ -126,7 +126,18 @@
 
 .popup-box {
   width: 35%;
-  height: 35vh;
+  height: 30vh;
+  padding: 10px;
+  background-color: rgb(243, 243, 243);
+  border-radius: 10px;
+  min-width: 400px;
+  min-height: 150px;
+  font-size: 1.2rem;
+}
+
+.popup-box-short {
+  width: 35%;
+  height: 25vh;
   padding: 10px;
   background-color: rgb(243, 243, 243);
   border-radius: 10px;
@@ -138,4 +149,14 @@
 .popup-msg {
   width: 70%;
   height: 50%;
+}
+
+.img-confirm {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.img-confirm-container {
+  height: 75%;
+  width: 100%;
 }
