@@ -417,7 +417,7 @@ app.post('/login', (request, response) => {
                 if (request.body.password === result[i].password) {
                     request.session.username = result[i].username;
                     request.session.cart = result[i].cart;
-                    console.log(request.session.cart);
+                    request.session.points = result[i].points;
                     if (request.session.cart.length == 0) {
                         var cart = [{
                             title: "No Items",
@@ -426,8 +426,10 @@ app.post('/login', (request, response) => {
                         }];
                     } else {
                         cart = request.session.cart;
+                        for (i=0; i < request.session.cart.length; i++) {
+                            sub_total.push(request.session.cart[i].price * request.session.cart[i].qty);
+                        }
                     }
-                    request.session.points = result[i].points;
                     response.render('landing.hbs', {
                         sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
                         cart: cart,
@@ -530,29 +532,21 @@ app.post('/register', function (request, response) {
 });
 
 app.get('/logout', redirectNotLoggedIn, (request, response) => {
-    var cart = [{
-        title: "No Items",
-        price: 0,
-        qty: 0,
-
-    }];
-    var sub_total = [];
-    if (request.session.username) {
-        if (request.session.cart.length > 0) {
-            cart = request.session.cart;
-            for (i=0; i < request.session.cart.length; i++) {
-                sub_total.push(request.session.cart[i].price * request.session.cart[i].qty);
-            }
-        }
-    }
     request.session.destroy(err => {
         if (err) {
             response.render('landing.hbs');
         }
         response.clearCookie("nozamA");
+        var cart = [{
+            title: "No Items",
+            price: 0,
+            qty: 0,
+
+        }];
+
         response.render("landing.hbs", {
             cart: cart,
-            sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
+            sub_total: 0,
             loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
             imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
         });
@@ -560,19 +554,29 @@ app.get('/logout', redirectNotLoggedIn, (request, response) => {
 });
 
 app.get('/add_cart/:id', redirectNotLoggedIn, (request, response) => {
+    for (i=0; i <request.session.cart.length; i++) {
+        console.log(request.session.cart[i].id);
+    }
+    var check = true;
     for (i=0; i < all_items.length; i++) {
         if (request.params.id === all_items[i].id) {
-            try {
-                if (request.params.id == request.session.cart[i].id) {
-                    request.session.cart[i].qty += 1;
-                    break;
-                } else {
-                    request.session.cart.push(all_items[i]);
-                    break;
-                }
-            } catch (e) {
+            if (request.session.cart.length === 0) {
                 request.session.cart.push(all_items[i]);
                 break;
+            } else {
+                check = false;
+                break;
+            }
+        }
+    }
+    if (!check) {
+        for (i=0; i < request.session.cart.length; i++) {
+            if (request.params.id === request.session.cart[i].id) {
+                request.session.cart[i].qty += 1;
+                break;
+            } else {
+                request.session.cart.push(all_items[i]);
+                break
             }
         }
     }
