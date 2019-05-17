@@ -1,22 +1,23 @@
-<li class="nav-item dropdown" id="cart">
-    <a href="http://localhost:8080/cart" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" id="drop_cart">
-        <img src="/img/cart.png" class="cart-icon"> My Cart
-    </a>
-    <div class="dropdown-menu dropmenu cart-dropmenu">
-        {{# each cart}}
+<li class="nav-item dropdown" id="test">
+  <a href="http://localhost:8080/cart" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" id="drop_cart">
+    <img src="/img/cart.png" class="cart-icon"> My Cart
+  </a>
+  <div class="dropdown-menu dropmenu cart-dropmenu" id="cart">
+    {{# each cart}}
     <div class="cart-menu"><h5>{{this.title}}</h5><p class="mb-0">${{this.price}}</p>
-        <div class="row">
-            <div class="col-7">
-                <p class="mb-0">quantity:</p>
-            </div>
-            <div class="col-5">
-                  <span>
-                      <a href="/minusOne/{{this.id}}"><img src="/img/minus.png" class="cart-button"></a> {{this.qty}} <a href="/plusOne/{{this.id}}"><img src="/img/plus.png" class="cart-button"></a>
-                  </span>
-            </div>
+      <div class="row">
+        <div class="col-7">
+          <p class="mb-0">quantity:</p>
         </div>
+        <div class="col-5">
+          <span>
+            <a href="/minusOne/{{this.id}}"><img src="/img/minus.png" class="cart-button"></a> {{this.qty}} <a href="/plusOne/{{this.id}}"><img src="/img/plus.png" class="cart-button"></a>
+          </span>
+        </div>
+      </div>
     </div>
-        {{/each}}
+    {{/each}}
     <div class="cart-total">Sub Total: ${{sub_total}}</div>
     <button class="btn btn-pink" onClick="window.location.href = '/cart'">View Cart</button>
-</div></li>
+  </div>
+</li>
