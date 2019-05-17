@@ -89,3 +89,20 @@ function confirmPurchase() {
   mymodal.style.visibility = 'visible';
   mymodal.style.opacity = '1';
 }
+$("#cart").on("click",function(event){
+  if($(event.target).closest(".dropdown").length){
+    // $('li.nav-item.dropdown').toggleClass('show');
+    $('.dropdown-toggle').dropdown()
+  }
+});
+// $('li.nav-item.dropdown a').on('click', function (event) {
+//   $(this).parent().toggleClass('show');
+// });
+// $('#cart').on('click', function (e) {
+//   if (!$('#cart').is(e.target)
+//       && $('#cart').has(e.target).length === 0
+//       && $('.open').has(e.target).length === 0
+//   ) {
+//     $('li.nav-item.dropdown').removeClass('show');
+//   }
+// });

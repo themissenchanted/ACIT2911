@@ -113,11 +113,11 @@
     "id": "mayo1",
     "title": "Mayonnaise",
     "img": "<img class=\"card-img-top img-fit\" src=\"img/products/instruments/mayo.png\" alt=\"Card image cap\">",
-    "description": "<a href=\"https://www.youtube.com/watch?v=A5jnftBQw2U\"><u>Yes, mayonnaise is an instrument</u></a>",
+    "description": "<a href=\"https://www.youtube.com/watch?v=A5jnftBQw2U\"><u style=\"color: black;\">Yes, mayonnaise is an instrument</u></a>",
     "price": 3.99,
     "qty": 1,
     "cartImg": "<img src=\"img/products/instruments/mayo.png\" class=\"img-fit cart-img\" alt=\"cart item image\">",
     "points": 20,
-    "dealsImg": "<img src=\"img/products/instruments/mayo.png\" class=\"img-fit\" height=\"200\" width=\"200\" alt=\"treasure\">"
+    "dealsImg": "<img src=\"img/products/instruments/mayo.png\" height=\"200\" width=\"200\" alt=\"treasure\">"
   }
 ]
