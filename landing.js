@@ -1,5 +1,3 @@
-const arr = require('./arrMethods.js');
-
 $('.center').slick({
   centerMode: true,
   centerPadding: '60px',
@@ -27,7 +25,7 @@ $('.center').slick({
 });
 
 function reveal() {
-  var field = document.getElementById("registerpassword")
+  var field = document.getElementById("registerpassword")+``
   var eye = document.getElementById("eye")
   if (field.type == "password") {
     field.type = "text"
@@ -81,7 +79,6 @@ function timer() {
     document.getElementById("timer").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
     if (timeLeft < 0) {
       document.getElementById("timer").innerHTML = "Deal Expired!";
-      window.location.href = '/todaysDeals'
     }
   }, 1000);
 }

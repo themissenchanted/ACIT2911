@@ -1,17 +1,15 @@
 const express = require('express');
-const path = require('path');
 const utils = require('./utils.js');
 const bodyParser = require('body-parser');
 const hbs = require('hbs');
-const cart_string = "'s Cart";
 const captchapng = require("captchapng");
 const session = require('express-session');
 const arr = require('./arrMethods');
 const sched = require('node-schedule');
 
-var electronics_products = require('./data/electronics');
-var instruments_products = require('./data/instruments');
-var groceries_products = require('./data/groceries');
+var electronics_products = Array.from(require('./data/electronics'));
+var instruments_products = Array.from(require('./data/instruments'));
+var groceries_products = Array.from(require('./data/groceries'));
 var all_items = electronics_products.concat(instruments_products, groceries_products);
 
 var app = express();
@@ -42,8 +40,9 @@ app.use(session({
 const getLocalDeal = () => {
     var db = utils.getDb();
     const item = [];
-    var randomItemIndex = Math.floor(Math.random() * all_items.length);
-    var randomItem = all_items[randomItemIndex];
+    const newList = Array.from(all_items);
+    var randomItemIndex = Math.floor(Math.random() * newList.length);
+    var randomItem = newList[randomItemIndex];
     var discount = +(Math.round((randomItem.price * 0.25) + "e+2")  + "e-2");
     randomItem.price -= +(Math.round((discount) + "e+2")  + "e-2");
     item.push(randomItem);
@@ -51,12 +50,10 @@ const getLocalDeal = () => {
     db.collection('deal').drop().then(function () {
         db.collection("deal").insertOne(myobj, function(err, res) {
             if (err) throw err;
-            console.log(res)
         });
     }).catch(function () {
         db.collection("deal").insertOne(myobj, function(err, res) {
             if (err) throw err;
-            console.log(res)
         });
     });
 };
@@ -66,7 +63,6 @@ const redirectNotLoggedIn = (req, res, next) => {
         title: "No Items",
         price: 0,
         qty: 0,
-
     }];
     var sub_total = [];
     if (req.session.username) {
@@ -93,6 +89,11 @@ const redirectNotLoggedIn = (req, res, next) => {
         next();
     }
 };
+
+router.get('/newItem', (request, response) => {
+    getLocalDeal();
+    response.redirect('/todays_deals');
+});
 
 router.get('/', (request, response) => {
     var cart = [{
@@ -174,7 +175,7 @@ router.get('/groceries', (request, response) => {
         response.render("groceries.hbs", {
             cart: cart,
             sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
-            products: groceries_products,
+            products: require('./data/groceries'),
             loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
             imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
         });
@@ -182,7 +183,7 @@ router.get('/groceries', (request, response) => {
         response.render('groceries.hbs', {
             cart: cart,
             sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
-            products: groceries_products,
+            products: require('./data/groceries'),
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
         });
     }
@@ -208,7 +209,7 @@ router.get('/electronics', (request, response) => {
         response.render("electronics.hbs", {
             cart: cart,
             sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
-            products: electronics_products,
+            products: require('./data/electronics'),
             loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
             imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
         });
@@ -216,7 +217,7 @@ router.get('/electronics', (request, response) => {
         response.render('electronics.hbs', {
             cart: cart,
             sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
-            products: electronics_products,
+            products: require('./data/electronics'),
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
         });
     }
@@ -242,7 +243,7 @@ router.get('/instruments', (request, response) => {
         response.render("instruments.hbs", {
             sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
             cart: cart,
-            products: instruments_products,
+            products: require('./data/instruments'),
             loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
             imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
         });
@@ -250,7 +251,7 @@ router.get('/instruments', (request, response) => {
         response.render('instruments.hbs', {
             sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
             cart: cart,
-            products: instruments_products,
+            products: require('./data/instruments'),
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>'
         });
     }
