@@ -90,20 +90,8 @@ function confirmPurchase() {
   mymodal.style.opacity = '1';
 }
 
-$("#cart").on("click",function(event){
-  if($(event.target).closest(".dropdown").length){
-    $('li.nav-item.dropdown').toggleClass('show');
-    // $('.dropdown-toggle').dropdown()
-  }
+/* Prevents cart dropdown close on inside click */
+$('.dropdown-menu').on("click.bs.dropdown", function (e) {
+  e.stopPropagation();
+  e.preventDefault();
 });
-// $('li.nav-item.dropdown a').on('click', function (event) {
-//   $(this).parent().toggleClass('show');
-// });
-// $('#cart').on('click', function (e) {
-//   if (!$('#cart').is(e.target)
-//       && $('#cart').has(e.target).length === 0
-//       && $('.open').has(e.target).length === 0
-//   ) {
-//     $('li.nav-item.dropdown').removeClass('show');
-//   }
-// });
