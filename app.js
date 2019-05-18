@@ -280,7 +280,7 @@ router.get('/aboutus', (request, response) => {
             imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">'
         });
     } else {
-        response.render('about.hbs', {
+        response.render('aboutus.hbs', {
             cart: cart,
             sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
             loginlogoutButton: '<li class="nav-item" id="cart"><a href="http://localhost:8080/logout" class="nav-link">Logout</a></li>',
