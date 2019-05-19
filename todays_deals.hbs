@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
   <link rel="stylesheet" href="css/general.css">
+  <link rel="stylesheet" href="css/categories.css">
   <link rel="stylesheet" href="css/deals.css">
   <link rel="icon" href="img/HatLogo.png">
   <title>Deal of the Day</title>
@@ -13,93 +14,10 @@
 <body onload="timer()">
 {{> fakeNavBar }}
 {{> realNavBar }}
-
-<div class="modal fade" id="login">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Login</h5>
-                <button type="button" class="close" data-dismiss="modal">
-                    &times;
-                </button>
-            </div>
-            <form method="post" action="/login" id="login_form">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input name="username" type="text" class="form-control" id="username" placeholder="Enter Username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="loginpassword">Password</label>
-                        <input name="password" type="password" class="form-control" id="loginpassword" placeholder="Enter password" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="vcode">Code</label>
-                        <input name="vcode" type="text" class="form-control" id="vcode" placeholder="Enter Verification Code" required>
-                    </div>
-                    {{{imgTag}}}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-dismiss="modal">
-                        Cancel
-                    </button>
-                    <button onclick="form_submit1()" value="Submit" class="btn btn-pink">Login</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="signup">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Sign Up</h5>
-                <button type="button" class="close" data-dismiss="modal">
-                    &times;
-                </button>
-            </div>
-            <form method="post" action="/register" id="register">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="registeruser">Username</label>
-                        <input name="username" type="text" class="form-control" id="registeruser" placeholder="Enter Username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="registerpassword">Password</label>
-                        <div class="input-group">
-                            <input name="password" type="password" class="form-control" id="registerpassword" placeholder="Enter password" required
-                                   onKeyUp="CheckIntensity(this.value)">
-                            <div class="input-group-append">
-                                <span class="input-group-text">
-                                  <i class="fa fa-eye-slash" id="eye" role="button" onclick="reveal()"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <table border="0" cellpadding="0" cellspacing="0" style="transform:translateY(8px);">
-                            <tr align="center">
-                                <td id="pwd_Weak" class="pwd pwd_c"> </td>
-                                <td id="pwd_Medium" class="pwd pwd_c pwd_f">NULL</td>
-                                <td id="pwd_Strong" class="pwd pwd_c pwd_c_r"> </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-dismiss="modal">
-                        Cancel
-                    </button>
-                    <button onclick="form_submit()" value="Submit" class="btn btn-pink">Register</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+{{> signInUpModals }}
 
 <div class="main-img">
-  <h1 class="main-title mb-0 pt-5">Todays Deals</h1>
+  <h1 class="main-title mb-0 pt-5">Today's Deal</h1>
 </div>
 
 {{# each item}}
