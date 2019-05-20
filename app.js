@@ -718,7 +718,7 @@ app.get('/checkout', redirectNotLoggedIn, (request, response) => {
         });
     }
     for (i=0; i < request.session.cart.length; i++) {
-        request.session.points += (Math.round((request.session.cart[i].price * request.session.cart[i].qty) * 1.1));
+        request.session.points += (Math.round((request.session.cart[i].price * request.session.cart[i].qty) * 0.25));
     }
     request.session.cart = [];
     var db = utils.getDb();
