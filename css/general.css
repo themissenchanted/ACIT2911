@@ -87,6 +87,11 @@ body {
   border-radius: 0.25rem;
 }
 
+.nav-active {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+}
+
 .cart-dropmenu {
   width: 15rem;
   padding: 10px;
