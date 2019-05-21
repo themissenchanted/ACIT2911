@@ -30,11 +30,12 @@
 </div>
 
 <!-- Login Error Popups -->
+
 <div class="popup6">
   <div class="popup-box-short">
     <p class="text-center popup-msg mx-auto mt-3">Invalid login information, try again!</p>
     <div class="row justify-content-center">
-      <a href="/landing.hbs" class="btn btn-pink" style="width: 80px;">Okay!</a>
+      <button onClick="okay6()" class="btn btn-pink" style="width: 80px;">Okay!</button>
     </div>
   </div>
 </div>
@@ -43,10 +44,20 @@
   <div class="popup-box-short">
     <p class="text-center popup-msg mx-auto mt-3">An account already exists with that username, try again!</p>
     <div class="row justify-content-center">
-      <a href="/landing.hbs" class="btn btn-pink" style="width: 80px;">Okay!</a>
+      <button onClick="okay7()" class="btn btn-pink" style="width: 80px;">Okay!</button>
     </div>
   </div>
 </div>
+
+<div class="popup8">
+    <div class="popup-box-short">
+        <p class="text-center popup-msg mx-auto mt-3">Invalid verification code, try again!</p>
+        <div class="row justify-content-center">
+            <button onClick="okay8()" class="btn btn-pink" style="width: 80px;">Okay!</button>
+        </div>
+    </div>
+</div>
+
 
 <div class="bd-example">
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -275,10 +286,31 @@
         $("#captchapng").attr('src',`/vcode?randomId=${Math.random()}`)
     });
 </script>
+<script>
+    function okay6() {
+        var mymodal = document.querySelector('.popup6');
+        mymodal.style.visibility = 'hidden';
+        mymodal.style.opacity = '0';
+    }
+</script>
+<script>
+    function okay7() {
+        var mymodal = document.querySelector('.popup7');
+        mymodal.style.visibility = 'hidden';
+        mymodal.style.opacity = '0';
+    }
+</script>
+<script>
+    function okay8() {
+        var mymodal = document.querySelector('.popup8');
+        mymodal.style.visibility = 'hidden';
+        mymodal.style.opacity = '0';
+    }
+</script>
 
 <script src="content/bootstrapJS/jquery-2.1.1.min.js" type="text/javascript"></script>
-{{{popup}}}
 {{{modal}}}
+{{{popup}}}
 {{{orderPlaced}}}
 </body>
 </html>

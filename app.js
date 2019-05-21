@@ -377,17 +377,19 @@ app.post('/login', (request, response) => {
         response.render('landing.hbs', {
             cart: cart,
             sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
-            popup: '<script>\n' +
-                '    $(document).ready(function(){\n' +
-                '        alert(\'Invalid verification code, try again!\');\n' +
-                '    });\n' +
-                '</script>',
             loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
             imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">',
             modal: '<script type="text/javascript">\n' +
                 '    $(window).on(\'load\',function(){\n' +
                 '        $(\'#login\').modal(\'show\');\n' +
                 '    });\n' +
+                '</script>',
+            popup: '<script>\n' +
+                '    $(document).ready(function () {\n' +
+                '        var mymodal = document.querySelector(\'.popup8\');\n' +
+                '        mymodal.style.visibility = \'visible\';\n' +
+                '        mymodal.style.opacity = \'1\';\n' +
+                '    })\n' +
                 '</script>'
         });
         return;
@@ -403,9 +405,11 @@ app.post('/login', (request, response) => {
                 sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
                 cart: cart,
                 popup: '<script>\n' +
-                    '    $(document).ready(function(){\n' +
-                    '        alert(\'Invalid login information, try again!\');\n' +
-                    '    });\n' +
+                    '    $(document).ready(function () {\n' +
+                    '        var mymodal = document.querySelector(\'.popup6\');\n' +
+                    '        mymodal.style.visibility = \'visible\';\n' +
+                    '        mymodal.style.opacity = \'1\';\n' +
+                    '    })\n' +
                     '</script>',
                 loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
                 imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">',
@@ -449,9 +453,11 @@ app.post('/login', (request, response) => {
                         cart: cart,
                         sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
                         popup: '<script>\n' +
-                            '    $(document).ready(function(){\n' +
-                            '        alert(\'Invalid login information, try again!\');\n' +
-                            '    });\n' +
+                            '    $(document).ready(function () {\n' +
+                            '        var mymodal = document.querySelector(\'.popup6\');\n' +
+                            '        mymodal.style.visibility = \'visible\';\n' +
+                            '        mymodal.style.opacity = \'1\';\n' +
+                            '    })\n' +
                             '</script>',
                         loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
                         imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">',
@@ -467,9 +473,11 @@ app.post('/login', (request, response) => {
                     cart: cart,
                     sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
                     popup: '<script>\n' +
-                        '    $(document).ready(function(){\n' +
-                        '        alert(\'Invalid login information, try again!\');\n' +
-                        '    });\n' +
+                        '    $(document).ready(function () {\n' +
+                        '        var mymodal = document.querySelector(\'.popup6\');\n' +
+                        '        mymodal.style.visibility = \'visible\';\n' +
+                        '        mymodal.style.opacity = \'1\';\n' +
+                        '    })\n' +
                         '</script>',
                     loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
                     imgTag: '<img id="captchapng" src="/vcode" alt="Smiley face" height="30" width="80">',
@@ -519,9 +527,11 @@ app.post('/register', function (request, response) {
                 cart: cart,
                 sub_total: Math.round(arr.arrSum(sub_total) * 100) / 100,
                 popup: '<script>\n' +
-                    '    $(document).ready(function(){\n' +
-                    '        alert(\'An account already exists with that username, try again!\');\n' +
-                    '    });\n' +
+                    '    $(document).ready(function () {\n' +
+                    '        var mymodal = document.querySelector(\'.popup7\');\n' +
+                    '        mymodal.style.visibility = \'visible\';\n' +
+                    '        mymodal.style.opacity = \'1\';\n' +
+                    '    })\n' +
                     '</script>',
                 loginlogoutButton: '<li class="nav-item" id="loginbutton"><a href="#" class="nav-link" data-toggle="modal" data-target="#login">Login</a></li>',
                 imgTag: '<img id="captchapng" src="/vcode" alt="Smiley Face" height="30" width="80">',
