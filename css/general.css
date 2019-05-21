@@ -118,6 +118,11 @@ body {
   font-weight: bold;
 }
 
+#todaNav {
+  border-left: 2px solid rgba(255, 255, 255, 0.7);
+  margin-left: 10px;
+}
+
 /* edited bootstrap code */
 .navbg {
   background-color: rgba(232, 29, 99, 0.7);
