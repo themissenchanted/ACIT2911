@@ -107,6 +107,9 @@ body {
   border-color: rgb(232, 29, 99);
 }
 
+.disable-nav {
+  color: rgb(210, 210, 210) !important;
+}
 .footer {
   background-color: rgba(232, 29, 99, 0.5);
   display: block;
@@ -188,8 +191,8 @@ body {
 /* Position the close button (top right corner) */
 .footeroverlay .closebtn {
   position: absolute;
-  top: 20px;
-  right: 45px;
+  top: 7vh;
+  right: 2vw;
   font-size: 60px;
 }
 

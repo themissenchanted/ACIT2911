@@ -93,5 +93,4 @@ function confirmPurchase() {
 /* Prevents cart dropdown close on inside click */
 $('.dropdown-menu').on("click.bs.dropdown", function (e) {
   e.stopPropagation();
-  e.preventDefault();
 });
