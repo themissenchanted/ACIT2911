@@ -195,6 +195,7 @@
 .slide:not(.slick-active) {
   cursor: pointer;
 }
+
 .popup5 {
   position: fixed;
   width: 100%;
