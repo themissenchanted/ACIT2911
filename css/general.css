@@ -34,7 +34,7 @@ body {
   height: 1em;
 }
 
-/***************** Pop Ups ************************/
+/******************** Pop Ups ************************/
 .popup6 {
   position: fixed;
   width: 100%;
@@ -148,8 +148,8 @@ body {
 }
 
 .nav-active {
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 8px;
+  border-bottom: 4px solid white;
+  font-weight: bold;
 }
 
 .cart-dropmenu {
